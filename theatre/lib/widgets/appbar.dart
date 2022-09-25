@@ -6,8 +6,8 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // backgroundColor: const Color.fromARGB(255, 13, 13, 13),
-      // titleSpacing: 0.0,
+       backgroundColor: const Color.fromARGB(255, 13, 13, 13),
+       titleSpacing: 0.0,
       title: Padding(
         padding: const EdgeInsets.only(top: 4.0),
         child: Text("CINEBOX",

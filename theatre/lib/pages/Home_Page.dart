@@ -530,7 +530,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart ,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -538,7 +538,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   trendingMovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked1 = !isliked1;
                                           },
@@ -653,7 +653,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -661,7 +661,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   topRatedMovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked2 = !isliked2;
                                           },
@@ -776,7 +776,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -784,7 +784,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   upcomingmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked3 = !isliked3;
                                           },
@@ -899,7 +899,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -907,7 +907,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   popularmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked4 = !isliked4;
                                           },
@@ -1020,7 +1020,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1028,7 +1028,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked5 = !isliked5;
                                           },
@@ -1144,7 +1144,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1152,7 +1152,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked6 = !isliked6;
                                           },
@@ -1267,7 +1267,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1275,7 +1275,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked7 = !isliked7;
                                           },
@@ -1391,7 +1391,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                          IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1399,7 +1399,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked8 = !isliked8;
                                           },
@@ -1514,7 +1514,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                          IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1522,7 +1522,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked9 = !isliked9;
                                           },
@@ -1636,7 +1636,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1644,7 +1644,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked10 = !isliked10;
                                           },
@@ -1757,7 +1757,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1765,7 +1765,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked11 = !isliked11;
                                           },
@@ -1878,7 +1878,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -1886,7 +1886,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked12 = !isliked12;
                                           },
@@ -1993,7 +1993,7 @@ class _Home_pageState extends State<Home_page> {
                                               )),
                                         ),
                                          IconButton(
-                                          icon: Icon(CupertinoIcons.heart_fill,
+                                          icon: Icon(CupertinoIcons.heart,
                                           color:Colors.white,
                                           ),
                                           onPressed: () {
@@ -2001,7 +2001,7 @@ class _Home_pageState extends State<Home_page> {
                                               dbref.push().set(
                                                   actionmovies[index].poster_path);
                                             } else {
-                                              dbref.remove();
+                                              //dbref.remove();
                                             }
                                             isliked13= !isliked13;
                                           },

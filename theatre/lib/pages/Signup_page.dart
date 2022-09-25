@@ -33,7 +33,7 @@ class _SignUp_PageState extends State<SignUp_Page> {
       child: Scaffold(
         backgroundColor: Colors.black87,
         appBar: AppBar(
-          //backgroundColor: Color.fromARGB(255, 25, 2, 83),
+          backgroundColor: Color.fromARGB(255, 25, 2, 83),
         ),
         body: Scrollbar(
           child: isLoading

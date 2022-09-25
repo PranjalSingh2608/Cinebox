@@ -176,11 +176,7 @@ class _TrendingPageState extends State<TrendingPage> {
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(56), child: MyAppBar()),
         body: SingleChildScrollView(
-          child: isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container(
+        child:Container(
                   child: Column(
                     children: [
                       GridView.count(
@@ -252,7 +248,7 @@ class _TrendingPageState extends State<TrendingPage> {
                                           
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -331,7 +327,7 @@ class _TrendingPageState extends State<TrendingPage> {
                                           
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -410,7 +406,7 @@ class _TrendingPageState extends State<TrendingPage> {
                                           
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -489,7 +485,7 @@ class _TrendingPageState extends State<TrendingPage> {
                                           
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -568,7 +564,7 @@ class _TrendingPageState extends State<TrendingPage> {
                                           
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
