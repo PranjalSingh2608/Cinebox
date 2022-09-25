@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -11,7 +12,11 @@ import 'package:theatre/widgets/appbar.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/drawer.dart';
-
+bool isliked1 = false;
+bool isliked2 = false;
+bool isliked3 = false;
+bool isliked4 = false;
+bool isliked5 = false;
 
 class UpcomingMoviesPage {
   final dynamic title,
@@ -56,6 +61,7 @@ class UpcomingPage extends StatefulWidget {
 }
 
 class _UpcomingPageState extends State<UpcomingPage> {
+  late DatabaseReference dbref;
   final String urltrending1 =
       "https://api.themoviedb.org/3/movie/upcoming?api_key=b3683b201570bdba7301facb6448362c&page=2";
   final String urltrending2 =
@@ -76,6 +82,8 @@ class _UpcomingPageState extends State<UpcomingPage> {
   @override
   void initState() {
     getJsonData();
+    dbref = FirebaseDatabase.instance.ref().child('Liked Videos');
+    //.child(FirebaseAuth.instance.currentUser.email.toString());
     super.initState();
   }
 

@@ -171,7 +171,7 @@ class PopularMovies {
 }
 
 FirebaseDatabase database = FirebaseDatabase.instance;
-DatabaseReference ref = FirebaseDatabase.instance.ref();
+DatabaseReference dbref = FirebaseDatabase.instance.ref();
 
 class Home_page extends StatefulWidget {
   Home_page({Key? key}) : super(key: key);
@@ -181,7 +181,8 @@ class Home_page extends StatefulWidget {
 }
 
 class _Home_pageState extends State<Home_page> {
-  late DatabaseReference dbref;
+  DatabaseReference dbref = FirebaseDatabase.instance.ref().child('Liked Videos');
+    //.child(FirebaseAuth.instance.currentUser.email.toString());
   //=====================================================================================================================================//
   final String urltrending =
       "https://api.themoviedb.org/3/trending/all/day?api_key=b3683b201570bdba7301facb6448362c";

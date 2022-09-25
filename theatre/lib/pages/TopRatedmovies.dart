@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -9,7 +10,11 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/rendering.dart';
 import 'package:theatre/pages/description.dart';
 import 'package:theatre/widgets/appbar.dart';
-
+bool isliked1 = false;
+bool isliked2 = false;
+bool isliked3 = false;
+bool isliked4 = false;
+bool isliked5 = false;
 class TopRatedPage extends StatefulWidget {
   const TopRatedPage({Key? key}) : super(key: key);
 
@@ -18,6 +23,7 @@ class TopRatedPage extends StatefulWidget {
 }
 
 class _TopRatedPageState extends State<TopRatedPage> {
+  late DatabaseReference dbref;
   final String urltrending1 =
       "https://api.themoviedb.org/3/movie/top_rated?api_key=b3683b201570bdba7301facb6448362c&page=2";
   final String urltrending2 =
@@ -36,6 +42,8 @@ class _TopRatedPageState extends State<TopRatedPage> {
   @override
   void initState() {
     getJsonData();
+    dbref = FirebaseDatabase.instance.ref().child('Liked Videos');
+    //.child(FirebaseAuth.instance.currentUser.email.toString());
     super.initState();
   }
 
