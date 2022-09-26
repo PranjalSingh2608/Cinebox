@@ -13,11 +13,11 @@ import 'package:tmdb_api/tmdb_api.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/drawer.dart';
 
-bool isliked1 = false;
-bool isliked2 = false;
-bool isliked3 = false;
-bool isliked4 = false;
-bool isliked5 = false;
+bool isliked31 = false;
+bool isliked32 = false;
+bool isliked33 = false;
+bool isliked34 = false;
+bool isliked35 = false;
 
 class ThrillerPage extends StatefulWidget {
   const ThrillerPage({Key? key}) : super(key: key);
@@ -195,6 +195,20 @@ class _ThrillerPageState extends State<ThrillerPage> {
                                       color: Colors.white,
                                     )),
                               ),
+                              IconButton(
+                                  onPressed: () {
+                                    if (isliked31) {
+                                              dbref.push().set(
+                                                  thrillermovies1[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked31 = !isliked31;
+                                  },
+                                  icon: Icon(
+                                    CupertinoIcons.heart,
+                                    color: Colors.white,
+                                  )),
                             ],
                           ),
                         ],
@@ -261,9 +275,17 @@ class _ThrillerPageState extends State<ThrillerPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (isliked32) {
+                                              dbref.push().set(
+                                                  thrillermovies1[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked32 = !isliked32;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
@@ -332,9 +354,17 @@ class _ThrillerPageState extends State<ThrillerPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                     if (isliked33) {
+                                              dbref.push().set(
+                                                  thrillermovies3[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked33 = !isliked33;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
@@ -403,9 +433,17 @@ class _ThrillerPageState extends State<ThrillerPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                     if (isliked34) {
+                                              dbref.push().set(
+                                                  thrillermovies4[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked34 = !isliked34;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
@@ -474,9 +512,17 @@ class _ThrillerPageState extends State<ThrillerPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                     if (isliked35) {
+                                              dbref.push().set(
+                                                  thrillermovies5[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked35 = !isliked35;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],

@@ -17,7 +17,8 @@ import 'package:theatre/pages/Thrillermovies.dart';
 import 'package:theatre/pages/TopRatedmovies.dart';
 import 'package:theatre/pages/Trendingmovies.dart';
 import 'package:theatre/pages/Upcomingmovies.dart';
-List<bool> _likes = List.filled(1000,true);
+
+List<bool> _likes = List.filled(1000, true);
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -40,6 +41,24 @@ class MyDrawer extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 20,
                           ))),
+                  ListTile(
+                    title: TextButton(
+                      child: Text(
+                        "Liked Movies",
+                        textAlign: TextAlign.center,
+                        textScaleFactor: 1.2,
+                        style: TextStyle(
+                          color: Colors.white54,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LikedVideos()));
+                      },
+                    ),
+                  ),
                   ListTile(
                     title: TextButton(
                       child: Text(

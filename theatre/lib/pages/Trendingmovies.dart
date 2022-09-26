@@ -11,12 +11,11 @@ import 'package:theatre/widgets/appbar.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/drawer.dart';
-import 'package:theatre/widgets/LikedVideos.dart';
-bool isliked1 = false;
-bool isliked2 = false;
-bool isliked3 = false;
-bool isliked4 = false;
-bool isliked5 = false;
+bool isliked21 = false;
+bool isliked22 = false;
+bool isliked23 = false;
+bool isliked24 = false;
+bool isliked25 = false;
 
 class TrendingMoviesPage {
   final dynamic name,
@@ -245,7 +244,13 @@ class _TrendingPageState extends State<TrendingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked21) {
+                                              dbref.push().set(
+                                                  trendingmovies1[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked21 = !isliked21;
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,
@@ -324,7 +329,13 @@ class _TrendingPageState extends State<TrendingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked22) {
+                                              dbref.push().set(
+                                                  trendingmovies2[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked22 = !isliked22;
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,
@@ -403,7 +414,13 @@ class _TrendingPageState extends State<TrendingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked23) {
+                                              dbref.push().set(
+                                                  trendingmovies3[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked23 = !isliked23;
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,
@@ -482,7 +499,13 @@ class _TrendingPageState extends State<TrendingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked24) {
+                                              dbref.push().set(
+                                                  trendingmovies4[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked24 = !isliked24;
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,
@@ -561,7 +584,13 @@ class _TrendingPageState extends State<TrendingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked25) {
+                                              dbref.push().set(
+                                                  trendingmovies5[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked25 = !isliked25;
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,

@@ -16,7 +16,6 @@ import 'package:theatre/widgets/Comedy.dart';
 import 'package:theatre/widgets/Doc.dart';
 import 'package:theatre/widgets/History.dart';
 import 'package:theatre/widgets/Horror.dart';
-import 'package:theatre/widgets/LikedVideos.dart';
 import 'package:theatre/widgets/Music.dart';
 import 'package:theatre/widgets/Scifi.dart';
 import 'package:theatre/widgets/Thriller.dart';
@@ -224,6 +223,7 @@ class _Home_pageState extends State<Home_page> {
   List<Documentries> documentry = [];
   List<Music> music = [];
   bool isLoading = false;
+   
   @override
   void initState() {
     getJsonData();
@@ -431,11 +431,7 @@ class _Home_pageState extends State<Home_page> {
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(56), child: MyAppBar()),
         body: SingleChildScrollView(
-          child: isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container(
+          child:Container(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

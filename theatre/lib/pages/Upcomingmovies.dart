@@ -7,16 +7,15 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:theatre/pages/Description.dart';
-import 'package:theatre/widgets/LikedVideos.dart';
 import 'package:theatre/widgets/appbar.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/drawer.dart';
-bool isliked1 = false;
-bool isliked2 = false;
-bool isliked3 = false;
-bool isliked4 = false;
-bool isliked5 = false;
+bool isliked15 = false;
+bool isliked16= false;
+bool isliked17 = false;
+bool isliked18 = false;
+bool isliked19 = false;
 
 class UpcomingMoviesPage {
   final dynamic title,
@@ -175,11 +174,7 @@ class _UpcomingPageState extends State<UpcomingPage> {
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(56), child: MyAppBar()),
         body: SingleChildScrollView(
-          child: isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Container(
+          child: Container(
                   child: Column(
                     children: [
                       GridView.count(
@@ -248,10 +243,16 @@ class _UpcomingPageState extends State<UpcomingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked15) {
+                                              dbref.push().set(
+                                                  upcomingmovies1[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked15 = !isliked15;
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -327,10 +328,16 @@ class _UpcomingPageState extends State<UpcomingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                           if (isliked16) {
+                                              dbref.push().set(
+                                                  upcomingmovies2[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked16 = !isliked16;
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -406,10 +413,16 @@ class _UpcomingPageState extends State<UpcomingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked17) {
+                                              dbref.push().set(
+                                                  upcomingmovies3[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked17 = !isliked17;
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -485,10 +498,16 @@ class _UpcomingPageState extends State<UpcomingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked18) {
+                                              dbref.push().set(
+                                                  upcomingmovies4[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked18 = !isliked18;
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],
@@ -564,10 +583,16 @@ class _UpcomingPageState extends State<UpcomingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          
+                                          if (isliked19) {
+                                              dbref.push().set(
+                                                  upcomingmovies5[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked19 = !isliked19;
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart_circle,
+                                          CupertinoIcons.heart,
                                           color: Colors.white,
                                         )),
                                   ],

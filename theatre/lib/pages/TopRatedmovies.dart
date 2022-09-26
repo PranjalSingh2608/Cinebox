@@ -10,11 +10,11 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/rendering.dart';
 import 'package:theatre/pages/description.dart';
 import 'package:theatre/widgets/appbar.dart';
-bool isliked1 = false;
-bool isliked2 = false;
-bool isliked3 = false;
-bool isliked4 = false;
-bool isliked5 = false;
+bool isliked26 = false;
+bool isliked27 = false;
+bool isliked28 = false;
+bool isliked29 = false;
+bool isliked30 = false;
 class TopRatedPage extends StatefulWidget {
   const TopRatedPage({Key? key}) : super(key: key);
 
@@ -192,9 +192,17 @@ class _TopRatedPageState extends State<TopRatedPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (isliked26) {
+                                              dbref.push().set(
+                                                  topratedmovies1[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked26 = !isliked26;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
@@ -263,9 +271,17 @@ class _TopRatedPageState extends State<TopRatedPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (isliked27) {
+                                              dbref.push().set(
+                                                  topratedmovies2[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked27 = !isliked27;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
@@ -334,9 +350,17 @@ class _TopRatedPageState extends State<TopRatedPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (isliked28) {
+                                              dbref.push().set(
+                                                  topratedmovies3[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked28 = !isliked28;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
@@ -405,9 +429,17 @@ class _TopRatedPageState extends State<TopRatedPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (isliked29) {
+                                              dbref.push().set(
+                                                  topratedmovies4[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked29 = !isliked29;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
@@ -476,9 +508,17 @@ class _TopRatedPageState extends State<TopRatedPage> {
                                     )),
                               ),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (isliked30) {
+                                              dbref.push().set(
+                                                  topratedmovies5[index].poster_path);
+                                            } else {
+                                              //dbref.remove();
+                                            }
+                                            isliked30 = !isliked30;
+                                  },
                                   icon: Icon(
-                                    CupertinoIcons.heart_circle,
+                                    CupertinoIcons.heart,
                                     color: Colors.white,
                                   )),
                             ],
