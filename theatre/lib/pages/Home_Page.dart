@@ -38,6 +38,7 @@ bool isliked11 = false;
 bool isliked12 = false;
 bool isliked13 = false;
 bool isliked14 = false;
+
 class TrendingMovies {
   final dynamic name,
       overview,
@@ -180,8 +181,9 @@ class Home_page extends StatefulWidget {
 }
 
 class _Home_pageState extends State<Home_page> {
-  DatabaseReference dbref = FirebaseDatabase.instance.ref().child('Liked Videos');
-    //.child(FirebaseAuth.instance.currentUser.email.toString());
+  DatabaseReference dbref =
+      FirebaseDatabase.instance.ref().child('Liked Videos')
+  .child(FirebaseAuth.instance.currentUser!.uid);
   //=====================================================================================================================================//
   final String urltrending =
       "https://api.themoviedb.org/3/trending/all/day?api_key=b3683b201570bdba7301facb6448362c";
@@ -223,12 +225,10 @@ class _Home_pageState extends State<Home_page> {
   List<Documentries> documentry = [];
   List<Music> music = [];
   bool isLoading = false;
-   
   @override
   void initState() {
     getJsonData();
-    dbref = FirebaseDatabase.instance.ref().child('Liked Videos');
-    //.child(FirebaseAuth.instance.currentUser.email.toString());
+    dbref = FirebaseDatabase.instance.ref().child('Liked Videos').child(FirebaseAuth.instance.currentUser!.uid);
     super.initState();
   }
 
@@ -431,1589 +431,1432 @@ class _Home_pageState extends State<Home_page> {
         appBar: PreferredSize(
             preferredSize: const Size.fromHeight(56), child: MyAppBar()),
         body: SingleChildScrollView(
-          child:Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Trending Now",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: trendingMovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MovieDesc(
-                                            name: trendingMovies[index].name,
-                                            backdrop_path:
-                                                "https://image.tmdb.org/t/p/w500/" +
-                                                    trendingMovies[index]
-                                                        .backdrop_path,
-                                            overview:
-                                                trendingMovies[index].overview,
-                                            released_on: trendingMovies[index]
-                                                .release_date,
-                                            vote_count: trendingMovies[index]
-                                                .vote_count,
-                                            id: trendingMovies[index].id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          // ignore: prefer_interpolation_to_compose_strings
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              trendingMovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: trendingMovies[
-                                                                    index]
-                                                                .name,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    trendingMovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                trendingMovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                trendingMovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                trendingMovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: trendingMovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart ,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked1) {
-                                              dbref.push().set(
-                                                  trendingMovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked1 = !isliked1;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Top Rated",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: topRatedMovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: topRatedMovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    topRatedMovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                topRatedMovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                topRatedMovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                topRatedMovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: topRatedMovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              topRatedMovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: topRatedMovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    topRatedMovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                topRatedMovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                topRatedMovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                topRatedMovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: topRatedMovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked2) {
-                                              dbref.push().set(
-                                                  topRatedMovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked2 = !isliked2;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Upcoming",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: upcomingmovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: upcomingmovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    upcomingmovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                upcomingmovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                upcomingmovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                upcomingmovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: upcomingmovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              upcomingmovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: upcomingmovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    upcomingmovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                upcomingmovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                upcomingmovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                upcomingmovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: upcomingmovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked3) {
-                                              dbref.push().set(
-                                                  upcomingmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked3 = !isliked3;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Popular",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: popularmovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                 Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: popularmovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    popularmovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                popularmovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                popularmovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                popularmovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: popularmovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              popularmovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: popularmovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    popularmovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                popularmovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                popularmovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                popularmovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: popularmovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked4) {
-                                              dbref.push().set(
-                                                  popularmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked4 = !isliked4;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      const Text(
-                        "Action",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: actionmovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: actionmovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    actionmovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                actionmovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                actionmovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                actionmovies[index]
-                                                                    .vote_count,
-                                                            id: actionmovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              actionmovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: actionmovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    actionmovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                actionmovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                actionmovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                actionmovies[index]
-                                                                    .vote_count,
-                                                            id: actionmovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked5) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked5 = !isliked5;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Adventure",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: adventuremovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                 Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: adventuremovies[index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    adventuremovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                adventuremovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                adventuremovies[
-                                                                        index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                adventuremovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: adventuremovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              adventuremovies[index]
-                                                  .poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: adventuremovies[index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    adventuremovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                adventuremovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                adventuremovies[
-                                                                        index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                adventuremovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: adventuremovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked6) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked6 = !isliked6;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Comedy",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: comedymovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: comedymovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    comedymovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                comedymovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                comedymovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                comedymovies[index]
-                                                                    .vote_count,
-                                                            id: comedymovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              comedymovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: comedymovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    comedymovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                comedymovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                comedymovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                comedymovies[index]
-                                                                    .vote_count,
-                                                            id: comedymovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked7) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked7 = !isliked7;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Thriller",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: thrillermovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: thrillermovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    thrillermovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                thrillermovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                thrillermovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                thrillermovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: thrillermovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              thrillermovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: thrillermovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    thrillermovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                thrillermovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                thrillermovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                thrillermovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: thrillermovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked8) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked8 = !isliked8;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Sci Fi",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: scifimovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: thrillermovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    scifimovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                scifimovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                scifimovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                scifimovies[index]
-                                                                    .vote_count,
-                                                            id: scifimovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              scifimovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: thrillermovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    scifimovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                scifimovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                scifimovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                scifimovies[index]
-                                                                    .vote_count,
-                                                            id: scifimovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked9) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked9 = !isliked9;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const Text(
-                        "Horror",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: horrormovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: horrormovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    horrormovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                horrormovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                horrormovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                horrormovies[index]
-                                                                    .vote_count,
-                                                            id: horrormovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          // ignore: prefer_interpolation_to_compose_strings
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              horrormovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: horrormovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    horrormovies[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                horrormovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                horrormovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                horrormovies[index]
-                                                                    .vote_count,
-                                                            id: horrormovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked10) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked10 = !isliked10;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const Text(
-                        "History",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: historymovies.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: historymovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    historymovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                historymovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                historymovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                historymovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: historymovies[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          // ignore: prefer_interpolation_to_compose_strings
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              historymovies[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: historymovies[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    historymovies[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                historymovies[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                historymovies[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                historymovies[
-                                                                        index]
-                                                                    .vote_count,
-                                                            id: historymovies[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked11) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked11 = !isliked11;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const Text(
-                        "Documentries",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: documentry.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: documentry[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    documentry[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                documentry[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                documentry[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                documentry[index]
-                                                                    .vote_count,
-                                                            id: documentry[
-                                                                    index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          // ignore: prefer_interpolation_to_compose_strings
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              documentry[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: documentry[
-                                                                    index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    documentry[
-                                                                            index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                documentry[index]
-                                                                    .overview,
-                                                            released_on:
-                                                                documentry[index]
-                                                                    .release_date,
-                                                            vote_count:
-                                                                documentry[index]
-                                                                    .vote_count,
-                                                            id: documentry[
-                                                                    index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked12) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked12 = !isliked12;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const Text(
-                        "Music",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 260,
-                        child: ListView.builder(
-                          itemCount: music.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: music[index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    music[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                music[index]
-                                                                    .overview,
-                                                            released_on: music[
-                                                                    index]
-                                                                .release_date,
-                                                            vote_count:
-                                                                music[index]
-                                                                    .vote_count,
-                                                            id: music[index]
-                                                                .id)));
-                              },
-                              child: Container(
-                                width: 140,
-                                child: Column(
-                                  children: [
-                                    Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0)),
-                                      elevation: 5,
-                                      child: Image.network(
-                                          // ignore: prefer_interpolation_to_compose_strings
-                                          "https://image.tmdb.org/t/p/w500/" +
-                                              music[index].poster_path,
-                                          fit: BoxFit.fill),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 25.0),
-                                          child: IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => MovieDesc(
-                                                            name: music[index]
-                                                                .title,
-                                                            backdrop_path:
-                                                                "https://image.tmdb.org/t/p/w500/" +
-                                                                    music[index]
-                                                                        .backdrop_path,
-                                                            overview:
-                                                                music[index]
-                                                                    .overview,
-                                                            released_on: music[
-                                                                    index]
-                                                                .release_date,
-                                                            vote_count:
-                                                                music[index]
-                                                                    .vote_count,
-                                                            id: music[index]
-                                                                .id)));
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.info_circle,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                         IconButton(
-                                          icon: Icon(CupertinoIcons.heart,
-                                          color:Colors.white,
-                                          ),
-                                          onPressed: () {
-                                            if (isliked13) {
-                                              dbref.push().set(
-                                                  actionmovies[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked13= !isliked13;
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+          child: Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Trending Now",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: trendingMovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: trendingMovies[index].name,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              trendingMovies[index]
+                                                  .backdrop_path,
+                                      overview: trendingMovies[index].overview,
+                                      released_on:
+                                          trendingMovies[index].release_date,
+                                      vote_count:
+                                          trendingMovies[index].vote_count,
+                                      id: trendingMovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        trendingMovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: trendingMovies[
+                                                              index]
+                                                          .name,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              trendingMovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview: trendingMovies[
+                                                              index]
+                                                          .overview,
+                                                      released_on:
+                                                          trendingMovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          trendingMovies[index]
+                                                              .vote_count,
+                                                      id: trendingMovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked1) {
+                                        dbref.push().set(
+                                            trendingMovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked1 = !isliked1;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Top Rated",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: topRatedMovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: topRatedMovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              topRatedMovies[index]
+                                                  .backdrop_path,
+                                      overview: topRatedMovies[index].overview,
+                                      released_on:
+                                          topRatedMovies[index].release_date,
+                                      vote_count:
+                                          topRatedMovies[index].vote_count,
+                                      id: topRatedMovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        topRatedMovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: topRatedMovies[
+                                                              index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              topRatedMovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview: topRatedMovies[
+                                                              index]
+                                                          .overview,
+                                                      released_on:
+                                                          topRatedMovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          topRatedMovies[index]
+                                                              .vote_count,
+                                                      id: topRatedMovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked2) {
+                                        dbref.push().set(
+                                            topRatedMovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked2 = !isliked2;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Upcoming",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: upcomingmovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: upcomingmovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              upcomingmovies[index]
+                                                  .backdrop_path,
+                                      overview: upcomingmovies[index].overview,
+                                      released_on:
+                                          upcomingmovies[index].release_date,
+                                      vote_count:
+                                          upcomingmovies[index].vote_count,
+                                      id: upcomingmovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        upcomingmovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: upcomingmovies[
+                                                              index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              upcomingmovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview: upcomingmovies[
+                                                              index]
+                                                          .overview,
+                                                      released_on:
+                                                          upcomingmovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          upcomingmovies[index]
+                                                              .vote_count,
+                                                      id: upcomingmovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked3) {
+                                        dbref.push().set(
+                                            upcomingmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked3 = !isliked3;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Popular",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: popularmovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: popularmovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              popularmovies[index]
+                                                  .backdrop_path,
+                                      overview: popularmovies[index].overview,
+                                      released_on:
+                                          popularmovies[index].release_date,
+                                      vote_count:
+                                          popularmovies[index].vote_count,
+                                      id: popularmovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        popularmovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: popularmovies[index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              popularmovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          popularmovies[index]
+                                                              .overview,
+                                                      released_on:
+                                                          popularmovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          popularmovies[index]
+                                                              .vote_count,
+                                                      id: popularmovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked4) {
+                                        dbref.push().set(
+                                            popularmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked4 = !isliked4;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 10),
+                const Text(
+                  "Action",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: actionmovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: actionmovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              actionmovies[index].backdrop_path,
+                                      overview: actionmovies[index].overview,
+                                      released_on:
+                                          actionmovies[index].release_date,
+                                      vote_count:
+                                          actionmovies[index].vote_count,
+                                      id: actionmovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        actionmovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: actionmovies[index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              actionmovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          actionmovies[index]
+                                                              .overview,
+                                                      released_on:
+                                                          actionmovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          actionmovies[index]
+                                                              .vote_count,
+                                                      id: actionmovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked5) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked5 = !isliked5;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Adventure",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: adventuremovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: adventuremovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              adventuremovies[index]
+                                                  .backdrop_path,
+                                      overview: adventuremovies[index].overview,
+                                      released_on:
+                                          adventuremovies[index].release_date,
+                                      vote_count:
+                                          adventuremovies[index].vote_count,
+                                      id: adventuremovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        adventuremovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: adventuremovies[
+                                                              index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              adventuremovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          adventuremovies[index]
+                                                              .overview,
+                                                      released_on:
+                                                          adventuremovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          adventuremovies[index]
+                                                              .vote_count,
+                                                      id: adventuremovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked6) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked6 = !isliked6;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Comedy",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: comedymovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: comedymovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              comedymovies[index].backdrop_path,
+                                      overview: comedymovies[index].overview,
+                                      released_on:
+                                          comedymovies[index].release_date,
+                                      vote_count:
+                                          comedymovies[index].vote_count,
+                                      id: comedymovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        comedymovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: comedymovies[index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              comedymovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          comedymovies[index]
+                                                              .overview,
+                                                      released_on:
+                                                          comedymovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          comedymovies[index]
+                                                              .vote_count,
+                                                      id: comedymovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked7) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked7 = !isliked7;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Thriller",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: thrillermovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: thrillermovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              thrillermovies[index]
+                                                  .backdrop_path,
+                                      overview: thrillermovies[index].overview,
+                                      released_on:
+                                          thrillermovies[index].release_date,
+                                      vote_count:
+                                          thrillermovies[index].vote_count,
+                                      id: thrillermovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        thrillermovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: thrillermovies[
+                                                              index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              thrillermovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview: thrillermovies[
+                                                              index]
+                                                          .overview,
+                                                      released_on:
+                                                          thrillermovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          thrillermovies[index]
+                                                              .vote_count,
+                                                      id: thrillermovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked8) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked8 = !isliked8;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Sci Fi",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: scifimovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: thrillermovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              scifimovies[index].backdrop_path,
+                                      overview: scifimovies[index].overview,
+                                      released_on:
+                                          scifimovies[index].release_date,
+                                      vote_count: scifimovies[index].vote_count,
+                                      id: scifimovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        scifimovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name:
+                                                          thrillermovies[index]
+                                                              .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              scifimovies[index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          scifimovies[index]
+                                                              .overview,
+                                                      released_on:
+                                                          scifimovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          scifimovies[index]
+                                                              .vote_count,
+                                                      id: scifimovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked9) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked9 = !isliked9;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const Text(
+                  "Horror",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: horrormovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: horrormovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              horrormovies[index].backdrop_path,
+                                      overview: horrormovies[index].overview,
+                                      released_on:
+                                          horrormovies[index].release_date,
+                                      vote_count:
+                                          horrormovies[index].vote_count,
+                                      id: horrormovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        horrormovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: horrormovies[index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              horrormovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          horrormovies[index]
+                                                              .overview,
+                                                      released_on:
+                                                          horrormovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          horrormovies[index]
+                                                              .vote_count,
+                                                      id: horrormovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked10) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked10 = !isliked10;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const Text(
+                  "History",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: historymovies.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: historymovies[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              historymovies[index]
+                                                  .backdrop_path,
+                                      overview: historymovies[index].overview,
+                                      released_on:
+                                          historymovies[index].release_date,
+                                      vote_count:
+                                          historymovies[index].vote_count,
+                                      id: historymovies[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        historymovies[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: historymovies[index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              historymovies[
+                                                                      index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          historymovies[index]
+                                                              .overview,
+                                                      released_on:
+                                                          historymovies[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          historymovies[index]
+                                                              .vote_count,
+                                                      id: historymovies[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked11) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked11 = !isliked11;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const Text(
+                  "Documentries",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: documentry.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: documentry[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              documentry[index].backdrop_path,
+                                      overview: documentry[index].overview,
+                                      released_on:
+                                          documentry[index].release_date,
+                                      vote_count: documentry[index].vote_count,
+                                      id: documentry[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        documentry[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: documentry[index]
+                                                          .title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              documentry[index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          documentry[index]
+                                                              .overview,
+                                                      released_on:
+                                                          documentry[index]
+                                                              .release_date,
+                                                      vote_count:
+                                                          documentry[index]
+                                                              .vote_count,
+                                                      id: documentry[index]
+                                                          .id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked12) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked12 = !isliked12;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const Text(
+                  "Music",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 260,
+                  child: ListView.builder(
+                    itemCount: music.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MovieDesc(
+                                      name: music[index].title,
+                                      backdrop_path:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                              music[index].backdrop_path,
+                                      overview: music[index].overview,
+                                      released_on: music[index].release_date,
+                                      vote_count: music[index].vote_count,
+                                      id: music[index].id)));
+                        },
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                elevation: 5,
+                                child: Image.network(
+                                    // ignore: prefer_interpolation_to_compose_strings
+                                    "https://image.tmdb.org/t/p/w500/" +
+                                        music[index].poster_path,
+                                    fit: BoxFit.fill),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25.0),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => MovieDesc(
+                                                      name: music[index].title,
+                                                      backdrop_path:
+                                                          "https://image.tmdb.org/t/p/w500/" +
+                                                              music[index]
+                                                                  .backdrop_path,
+                                                      overview:
+                                                          music[index].overview,
+                                                      released_on: music[index]
+                                                          .release_date,
+                                                      vote_count: music[index]
+                                                          .vote_count,
+                                                      id: music[index].id)));
+                                        },
+                                        icon: Icon(
+                                          CupertinoIcons.info_circle,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.heart,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      if (isliked13) {
+                                        dbref.push().set(
+                                            actionmovies[index].poster_path);
+                                      } else {
+                                        //dbref.remove();
+                                      }
+                                      isliked13 = !isliked13;
+                                    },
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

@@ -44,6 +44,7 @@ dependencies:
   material_floating_search_bar: ^0.3.7
   flutter_svg: ^0.20.0-nullsafety.3
   firebase_database: ^9.1.5
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
