@@ -7,51 +7,12 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:theatre/pages/Description.dart';
+import 'package:theatre/pages/Home_Page.dart';
 import 'package:theatre/widgets/appbar.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/drawer.dart';
 bool isliked21 = false;
-bool isliked22 = false;
-bool isliked23 = false;
-bool isliked24 = false;
-bool isliked25 = false;
-
-class TrendingMoviesPage {
-  final dynamic name,
-      overview,
-      origin_country,
-      poster_path,
-      original_language,
-      vote_count,
-      release_date,
-      backdrop_path,
-      id;
-
-  const TrendingMoviesPage(
-      {this.name,
-      this.overview,
-      this.origin_country,
-      this.poster_path,
-      this.original_language,
-      this.vote_count,
-      this.release_date,
-      this.backdrop_path,
-      this.id});
-  factory TrendingMoviesPage.fromJson(Map<String, dynamic> json) {
-    return TrendingMoviesPage(
-        name: json['name'],
-        overview: json['overview'],
-        origin_country: json['origin_country'],
-        poster_path: json['poster_path'],
-        original_language: json['original_language'],
-        vote_count: json['vote_count'],
-        release_date: json['release_date'],
-        backdrop_path: json['backdrop_path'],
-        id: json['id']);
-  }
-}
-
 class TrendingPage extends StatefulWidget {
   const TrendingPage({Key? key}) : super(key: key);
 
@@ -71,11 +32,7 @@ class _TrendingPageState extends State<TrendingPage> {
       "https://api.themoviedb.org/3/trending/all/day?api_key=b3683b201570bdba7301facb6448362c&page=5";
   final String urltrending5 =
       "https://api.themoviedb.org/3/trending/all/day?api_key=b3683b201570bdba7301facb6448362c&page=6";
-  List<TrendingMoviesPage> trendingmovies1 = [];
-  List<TrendingMoviesPage> trendingmovies2 = [];
-  List<TrendingMoviesPage> trendingmovies3 = [];
-  List<TrendingMoviesPage> trendingmovies4 = [];
-  List<TrendingMoviesPage> trendingmovies5 = [];
+  List<TrendingMovies> trendingmovies1 = [];
   bool isLoading = true;
 
   @override
@@ -99,7 +56,7 @@ class _TrendingPageState extends State<TrendingPage> {
     var jsonDatatrending5 = jsonDecode(responsetrending5.body);
     setState(() {
       for (var i in jsonDatatrending1['results']) {
-        TrendingMoviesPage trend1 = TrendingMoviesPage(
+        TrendingMovies trend1 = TrendingMovies(
             name: i["name"],
             overview: i['overview'],
             origin_country: i['origin_country'],
@@ -112,7 +69,7 @@ class _TrendingPageState extends State<TrendingPage> {
         trendingmovies1.add(trend1);
       }
       for (var i in jsonDatatrending2['results']) {
-        TrendingMoviesPage trend2 = TrendingMoviesPage(
+        TrendingMovies trend2 = TrendingMovies(
             name: i["name"],
             overview: i['overview'],
             origin_country: i['origin_country'],
@@ -122,10 +79,10 @@ class _TrendingPageState extends State<TrendingPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        trendingmovies2.add(trend2);
+        trendingmovies1.add(trend2);
       }
-      for (var i in jsonDatatrending1['results']) {
-        TrendingMoviesPage trend3 = TrendingMoviesPage(
+      for (var i in jsonDatatrending3['results']) {
+        TrendingMovies trend3 = TrendingMovies(
             name: i["name"],
             overview: i['overview'],
             origin_country: i['origin_country'],
@@ -135,10 +92,10 @@ class _TrendingPageState extends State<TrendingPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        trendingmovies3.add(trend3);
+        trendingmovies1.add(trend3);
       }
-      for (var i in jsonDatatrending1['results']) {
-        TrendingMoviesPage trend4 = TrendingMoviesPage(
+      for (var i in jsonDatatrending4['results']) {
+        TrendingMovies trend4 = TrendingMovies(
             name: i["name"],
             overview: i['overview'],
             origin_country: i['origin_country'],
@@ -148,10 +105,10 @@ class _TrendingPageState extends State<TrendingPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        trendingmovies4.add(trend4);
+        trendingmovies1.add(trend4);
       }
-      for (var i in jsonDatatrending1['results']) {
-        TrendingMoviesPage trend5 = TrendingMoviesPage(
+      for (var i in jsonDatatrending5['results']) {
+        TrendingMovies trend5 = TrendingMovies(
             name: i["name"],
             overview: i['overview'],
             origin_country: i['origin_country'],
@@ -161,7 +118,7 @@ class _TrendingPageState extends State<TrendingPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        trendingmovies5.add(trend5);
+        trendingmovies1.add(trend5);
         isLoading = true;
       }
     });
@@ -251,346 +208,6 @@ class _TrendingPageState extends State<TrendingPage> {
                                               //dbref.remove();
                                             }
                                             isliked21 = !isliked21;
-                                        },
-                                        icon: Icon(
-                                          CupertinoIcons.heart,
-                                          color: Colors.white,
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
-                      ),
-                      GridView.count(
-                        physics: ScrollPhysics(),
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 30,
-                        crossAxisSpacing: 5,
-                        childAspectRatio: 0.5,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: new List<Widget>.generate(
-                            trendingmovies2.length, (index) {
-                          return Container(
-                            child: Column(
-                              children: [
-                                Card(
-                                  semanticContainer: true,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                  elevation: 5,
-                                  child: Image.network(
-                                      // ignore: prefer_interpolation_to_compose_strings
-                                      "https://image.tmdb.org/t/p/w500/" +
-                                          trendingmovies2[index].poster_path,
-                                      fit: BoxFit.fill),
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: IconButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) => MovieDesc(
-                                                        name: trendingmovies2[
-                                                                index]
-                                                            .name,
-                                                        backdrop_path:
-                                                            "https://image.tmdb.org/t/p/w500/" +
-                                                                trendingmovies2[
-                                                                        index]
-                                                                    .backdrop_path,
-                                                        overview:
-                                                            trendingmovies2[index]
-                                                                .overview,
-                                                        released_on:
-                                                            trendingmovies2[index]
-                                                                .release_date,
-                                                        vote_count:
-                                                            trendingmovies2[
-                                                                    index]
-                                                                .vote_count,
-                                                        id: trendingmovies2[
-                                                                index]
-                                                            .id)));
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.info_circle,
-                                            color: Colors.white,
-                                          )),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          if (isliked22) {
-                                              dbref.push().set(
-                                                  trendingmovies2[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked22 = !isliked22;
-                                        },
-                                        icon: Icon(
-                                          CupertinoIcons.heart,
-                                          color: Colors.white,
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
-                      ),
-                      GridView.count(
-                        physics: ScrollPhysics(),
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 30,
-                        crossAxisSpacing: 5,
-                        childAspectRatio: 0.5,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: new List<Widget>.generate(
-                            trendingmovies3.length, (index) {
-                          return Container(
-                            child: Column(
-                              children: [
-                                Card(
-                                  semanticContainer: true,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                  elevation: 5,
-                                  child: Image.network(
-                                      // ignore: prefer_interpolation_to_compose_strings
-                                      "https://image.tmdb.org/t/p/w500/" +
-                                          trendingmovies3[index].poster_path,
-                                      fit: BoxFit.fill),
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: IconButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) => MovieDesc(
-                                                        name: trendingmovies3[
-                                                                index]
-                                                            .name,
-                                                        backdrop_path:
-                                                            "https://image.tmdb.org/t/p/w500/" +
-                                                                trendingmovies3[
-                                                                        index]
-                                                                    .backdrop_path,
-                                                        overview:
-                                                            trendingmovies3[index]
-                                                                .overview,
-                                                        released_on:
-                                                            trendingmovies3[index]
-                                                                .release_date,
-                                                        vote_count:
-                                                            trendingmovies3[
-                                                                    index]
-                                                                .vote_count,
-                                                        id: trendingmovies3[
-                                                                index]
-                                                            .id)));
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.info_circle,
-                                            color: Colors.white,
-                                          )),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          if (isliked23) {
-                                              dbref.push().set(
-                                                  trendingmovies3[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked23 = !isliked23;
-                                        },
-                                        icon: Icon(
-                                          CupertinoIcons.heart,
-                                          color: Colors.white,
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
-                      ),
-                      GridView.count(
-                        physics: ScrollPhysics(),
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 30,
-                        crossAxisSpacing: 5,
-                        childAspectRatio: 0.5,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: new List<Widget>.generate(
-                            trendingmovies4.length, (index) {
-                          return Container(
-                            child: Column(
-                              children: [
-                                Card(
-                                  semanticContainer: true,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                  elevation: 5,
-                                  child: Image.network(
-                                      // ignore: prefer_interpolation_to_compose_strings
-                                      "https://image.tmdb.org/t/p/w500/" +
-                                          trendingmovies4[index].poster_path,
-                                      fit: BoxFit.fill),
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: IconButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) => MovieDesc(
-                                                        name: trendingmovies4[
-                                                                index]
-                                                            .name,
-                                                        backdrop_path:
-                                                            "https://image.tmdb.org/t/p/w500/" +
-                                                                trendingmovies4[
-                                                                        index]
-                                                                    .backdrop_path,
-                                                        overview:
-                                                            trendingmovies4[index]
-                                                                .overview,
-                                                        released_on:
-                                                            trendingmovies4[index]
-                                                                .release_date,
-                                                        vote_count:
-                                                            trendingmovies4[
-                                                                    index]
-                                                                .vote_count,
-                                                        id: trendingmovies4[
-                                                                index]
-                                                            .id)));
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.info_circle,
-                                            color: Colors.white,
-                                          )),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          if (isliked24) {
-                                              dbref.push().set(
-                                                  trendingmovies4[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked24 = !isliked24;
-                                        },
-                                        icon: Icon(
-                                          CupertinoIcons.heart,
-                                          color: Colors.white,
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
-                      ),
-                      GridView.count(
-                        physics: ScrollPhysics(),
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 30,
-                        crossAxisSpacing: 5,
-                        childAspectRatio: 0.5,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: new List<Widget>.generate(
-                            trendingmovies5.length, (index) {
-                          return Container(
-                            child: Column(
-                              children: [
-                                Card(
-                                  semanticContainer: true,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                  elevation: 5,
-                                  child: Image.network(
-                                      // ignore: prefer_interpolation_to_compose_strings
-                                      "https://image.tmdb.org/t/p/w500/" +
-                                          trendingmovies5[index].poster_path,
-                                      fit: BoxFit.fill),
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: IconButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) => MovieDesc(
-                                                        name: trendingmovies5[
-                                                                index]
-                                                            .name,
-                                                        backdrop_path:
-                                                            "https://image.tmdb.org/t/p/w500/" +
-                                                                trendingmovies5[
-                                                                        index]
-                                                                    .backdrop_path,
-                                                        overview:
-                                                            trendingmovies5[index]
-                                                                .overview,
-                                                        released_on:
-                                                            trendingmovies5[index]
-                                                                .release_date,
-                                                        vote_count:
-                                                            trendingmovies5[
-                                                                    index]
-                                                                .vote_count,
-                                                        id: trendingmovies5[
-                                                                index]
-                                                            .id)));
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.info_circle,
-                                            color: Colors.white,
-                                          )),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          if (isliked25) {
-                                              dbref.push().set(
-                                                  trendingmovies5[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked25 = !isliked25;
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,

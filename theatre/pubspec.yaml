@@ -45,6 +45,7 @@ dependencies:
   flutter_svg: ^0.20.0-nullsafety.3
   firebase_database: ^9.1.5
   fluttertoast: ^8.0.9
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:

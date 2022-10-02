@@ -11,22 +11,23 @@ import 'package:theatre/widgets/drawer.dart';
 
 import 'description.dart';
 
-class Data {
-  final dynamic image,key;
-  const Data({
-    required this.image,
-    required this.key,
-  });
+// class Data {
+//   final dynamic image, key;
+//   const Data({
+//     required this.image,
+//     required this.key,
+//   });
 
-  factory Data.fromMap(Map<dynamic, dynamic> map) {
-    return Data(
-      image: map['image'] ?? '',
-      key:map['key'] ?? '',
-    );
-  }
-}
+//   factory Data.fromMap(Map<dynamic, dynamic> map) {
+//     return Data(
+//       image: map['image'] ?? '',
+//       key: map['key'] ?? '',
+//     );
+//   }
+// }
 
-final List<Data> list = [];
+final List<String> values = [];
+final List<String> list = [];
 
 class LikedVideos extends StatefulWidget {
   const LikedVideos({super.key});
@@ -35,7 +36,10 @@ class LikedVideos extends StatefulWidget {
 }
 
 class _LikedVideosState extends State<LikedVideos> {
-   DatabaseReference dbref = FirebaseDatabase.instance.ref().child("Liked Videos").child(FirebaseAuth.instance.currentUser!.uid);
+  DatabaseReference dbref = FirebaseDatabase.instance
+      .ref()
+      .child("Liked Videos")
+      .child(FirebaseAuth.instance.currentUser!.uid);
   @override
   void initState() {
     print("Hello");
@@ -56,17 +60,17 @@ class _LikedVideosState extends State<LikedVideos> {
       print(snapshot.value);
     } else {
       Fluttertoast.showToast(
-        msg: "No Data",  // message
+        msg: "No Data", // message
         toastLength: Toast.LENGTH_SHORT, // length
-        gravity: ToastGravity.CENTER,    // location
-    );
-
+        gravity: ToastGravity.CENTER, // location
+      );
     }
     final map = snapshot.value as Map<dynamic, dynamic>;
 
-    map.forEach((key, value) {
-      final data = Data.fromMap(value);
-      list.add(data);
+    final values = map.values as Iterable;
+    values.forEach((element) {
+      print("https://image.tmdb.org/t/p/w500" + element);
+      list.add(element);
     });
   }
 
@@ -94,58 +98,72 @@ class _LikedVideosState extends State<LikedVideos> {
                 SizedBox(
                   height: 10,
                 ),
-                GridView.count(
-                  crossAxisCount: 3,
-                  physics: ScrollPhysics(),
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 5,
-                  childAspectRatio: 0.5,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: new List<Widget>.generate(list.length, (index) {
-                    return Container(
-                      child: Column(
-                        children: [
-                          Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            elevation: 5,
-                            child: Image.network(
-                                // ignore: prefer_interpolation_to_compose_strings
-                                "https://image.tmdb.org/t/p/w500/" +
-                                    list[index].image,
-                                fit: BoxFit.fill),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-                // FirebaseAnimatedList(
-                //   query:dbref,
-                //   itemBuilder: ((BuildContext context, DataSnapshot snapshot,Animation animation, int index) {
-                //      return Container(
+                // GridView.count(
+                //   physics: ScrollPhysics(),
+                //   crossAxisCount: 3,
+                //   mainAxisSpacing: 30,
+                //   crossAxisSpacing: 5,
+                //   childAspectRatio: 0.5,
+                //   shrinkWrap: true,
+                //   scrollDirection: Axis.vertical,
+                //   children: new List<Widget>.generate(values.length, (index) {
+                //     return Container(
                 //       child: Column(
                 //         children: [
+                //           Image.network(
+                //               "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"),
                 //           Card(
-                //             semanticContainer: true,
-                //             clipBehavior: Clip.antiAliasWithSaveLayer,
-                //             shape: RoundedRectangleBorder(
-                //                 borderRadius: BorderRadius.circular(10.0)),
-                //             elevation: 5,
-                //             child: Image.network(
-                //                 // ignore: prefer_interpolation_to_compose_strings
-                //                 "https://image.tmdb.org/t/p/w500/" +
-                //                     snapshot.value[],
-                //                 fit: BoxFit.fill),
+                //             color: Colors.white,
+                //             child: Padding(
+                //               padding: EdgeInsets.all(10),
+                //               child: Column(
+                //                 children: [
+                //                   Ink.image(
+                //                     image: NetworkImage(
+                //                         'https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg'),
+                //                     height: 240,
+                //                     fit: BoxFit.fitHeight,
+                //                   )
+                //                 ],
+                //               ),
+                //             ),
                 //           ),
                 //         ],
                 //       ),
                 //     );
                 //   }),
                 // ),
+                Container(
+                  
+                  height: MediaQuery.of(context).size.height,
+                  child: ListView.builder(
+                    itemCount: list.length,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {},
+                        child: Container(
+                          width: 140,
+                          child: Column(
+                            children: [
+                              //Card(
+                              // semanticContainer: true,
+                              // clipBehavior: Clip.antiAliasWithSaveLayer,
+                              // shape: RoundedRectangleBorder(
+                              //     borderRadius: BorderRadius.circular(10.0)),
+                              // elevation: 5,
+                              Image.network(
+                                  "https://image.tmdb.org/t/p/w500/" +
+                                      list[index],
+                                  fit: BoxFit.fill),
+                              //),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,11 +6,11 @@ import 'package:theatre/pages/Actionmovies.dart';
 import 'package:theatre/pages/Adventuremovies.dart';
 import 'package:theatre/pages/Comedymovies.dart';
 import 'package:theatre/pages/Documentries.dart';
-import 'package:theatre/pages/Dramamovies.dart';
 import 'package:theatre/pages/Historymovies.dart';
 import 'package:theatre/pages/Home_Page.dart';
 import 'package:theatre/pages/Horrormovies.dart';
 import 'package:theatre/pages/Likedvideos.dart';
+import 'package:theatre/pages/Login_page.dart';
 import 'package:theatre/pages/Music.dart';
 import 'package:theatre/pages/Popularmovies.dart';
 import 'package:theatre/pages/Scifimovies.dart';
@@ -20,8 +21,23 @@ import 'package:theatre/pages/Upcomingmovies.dart';
 
 List<bool> _likes = List.filled(1000, true);
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  signout() async {
+    await FirebaseAuth.instance.signOut();
+
+    Navigator.pushReplacement(
+        this.context,
+        MaterialPageRoute(
+          builder: (context) => Login_Page(),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -224,24 +240,6 @@ class MyDrawer extends StatelessWidget {
                   ListTile(
                     title: TextButton(
                       child: Text(
-                        "Drama",
-                        textAlign: TextAlign.center,
-                        textScaleFactor: 1.2,
-                        style: TextStyle(
-                          color: Colors.white54,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DramaPage()));
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    title: TextButton(
-                      child: Text(
                         "Thriller",
                         textAlign: TextAlign.center,
                         textScaleFactor: 1.2,
@@ -309,6 +307,19 @@ class MyDrawer extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => MusicPage()));
                       },
+                    ),
+                  ),
+                  ListTile(
+                    title: TextButton(
+                      child: Text(
+                        "Sign Out",
+                        textAlign: TextAlign.center,
+                        textScaleFactor: 1.2,
+                        style: TextStyle(
+                          color: Colors.white54,
+                        ),
+                      ),
+                      onPressed: () => signout(),
                     ),
                   ),
                 ],

@@ -73,7 +73,7 @@ class _ScifiPageState extends State<ScifiPage> {
             id: i['id']);
         scifimovies1.add(scifi1);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending2['results']) {
         ScifiMovies scifi2 = ScifiMovies(
             title: i["title"],
             overview: i['overview'],
@@ -85,7 +85,7 @@ class _ScifiPageState extends State<ScifiPage> {
             id: i['id']);
         scifimovies1.add(scifi2);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending3['results']) {
         ScifiMovies scifi3 = ScifiMovies(
             title: i["title"],
             overview: i['overview'],
@@ -97,7 +97,7 @@ class _ScifiPageState extends State<ScifiPage> {
             id: i['id']);
         scifimovies1.add(scifi3);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending4['results']) {
         ScifiMovies scifi4 = ScifiMovies(
             title: i["title"],
             overview: i['overview'],
@@ -109,7 +109,7 @@ class _ScifiPageState extends State<ScifiPage> {
             id: i['id']);
         scifimovies1.add(scifi4);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending5['results']) {
         ScifiMovies scifi5 = ScifiMovies(
             title: i["title"],
             overview: i['overview'],

@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:theatre/pages/Signup_page.dart';
 import 'package:theatre/pages/description.dart';
 import 'package:theatre/utils/routes.dart';
+import 'package:theatre/widgets/share.dart';
 import 'pages/Home_Page.dart';
 import 'pages/Login_page.dart';
 
@@ -17,10 +18,32 @@ void main() async{
 
 var idx;
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+   var isLogin;
+
+  checkUserLoginState() async {
+    await Shared.getUserSharedPrefernces().then(
+      (value) {
+        setState(() {
+          isLogin = value;
+        });
+      },
+    );
+  }
+  
+
+  void iniState() {
+    checkUserLoginState();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +53,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      initialRoute:FirebaseAuth.instance.currentUser != null ? '/home' : '/signup',
+      initialRoute:FirebaseAuth.instance.currentUser != null ? '/home' : '/login',
       routes: {
         MyRoutes.SignUpRoute: ((context) => SignUp_Page()),
         MyRoutes.HomeRoute: ((context) => Home_page()),

@@ -66,7 +66,7 @@ class _PopularPageState extends State<PopularPage> {
             id: i['id']);
         popularmovies1.add(popular1);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending2['results']) {
         PopularMovies popular2 = PopularMovies(
             title: i["title"],
             overview: i['overview'],
@@ -78,7 +78,7 @@ class _PopularPageState extends State<PopularPage> {
             id: i['id']);
         popularmovies1.add(popular2);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending3['results']) {
         PopularMovies popular3 = PopularMovies(
             title: i["title"],
             overview: i['overview'],
@@ -90,7 +90,7 @@ class _PopularPageState extends State<PopularPage> {
             id: i['id']);
         popularmovies1.add(popular3);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending4['results']) {
         PopularMovies popular4 = PopularMovies(
             title: i["title"],
             overview: i['overview'],
@@ -102,7 +102,7 @@ class _PopularPageState extends State<PopularPage> {
             id: i['id']);
         popularmovies1.add(popular4);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending5['results']) {
         PopularMovies popular5 = PopularMovies(
             title: i["title"],
             overview: i['overview'],

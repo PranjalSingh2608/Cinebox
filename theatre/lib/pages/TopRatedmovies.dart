@@ -11,10 +11,6 @@ import 'package:flutter/rendering.dart';
 import 'package:theatre/pages/description.dart';
 import 'package:theatre/widgets/appbar.dart';
 bool isliked26 = false;
-bool isliked27 = false;
-bool isliked28 = false;
-bool isliked29 = false;
-bool isliked30 = false;
 class TopRatedPage extends StatefulWidget {
   const TopRatedPage({Key? key}) : super(key: key);
 
@@ -35,10 +31,6 @@ class _TopRatedPageState extends State<TopRatedPage> {
   final String urltrending5 =
       "https://api.themoviedb.org/3/movie/top_rated?api_key=b3683b201570bdba7301facb6448362c&page=6";
   List<TopRatedMovies> topratedmovies1 = [];
-  List<TopRatedMovies> topratedmovies2 = [];
-  List<TopRatedMovies> topratedmovies3 = [];
-  List<TopRatedMovies> topratedmovies4 = [];
-  List<TopRatedMovies> topratedmovies5 = [];
   @override
   void initState() {
     getJsonData();
@@ -71,7 +63,7 @@ class _TopRatedPageState extends State<TopRatedPage> {
             id: i['id']);
         topratedmovies1.add(toprated1);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending2['results']) {
         TopRatedMovies toprated2 = TopRatedMovies(
             title: i["title"],
             overview: i['overview'],
@@ -81,9 +73,9 @@ class _TopRatedPageState extends State<TopRatedPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        topratedmovies2.add(toprated2);
+        topratedmovies1.add(toprated2);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending3['results']) {
         TopRatedMovies toprated3 = TopRatedMovies(
             title: i["title"],
             overview: i['overview'],
@@ -93,9 +85,9 @@ class _TopRatedPageState extends State<TopRatedPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        topratedmovies3.add(toprated3);
+        topratedmovies1.add(toprated3);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending4['results']) {
         TopRatedMovies toprated4 = TopRatedMovies(
             title: i["title"],
             overview: i['overview'],
@@ -105,9 +97,9 @@ class _TopRatedPageState extends State<TopRatedPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        topratedmovies4.add(toprated4);
+        topratedmovies1.add(toprated4);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending5['results']) {
         TopRatedMovies toprated5 = TopRatedMovies(
             title: i["title"],
             overview: i['overview'],
@@ -117,7 +109,7 @@ class _TopRatedPageState extends State<TopRatedPage> {
             release_date: i['release_date'],
             backdrop_path: i['backdrop_path'],
             id: i['id']);
-        topratedmovies5.add(toprated5);
+        topratedmovies1.add(toprated5);
       }
     });
   }
@@ -200,322 +192,6 @@ class _TopRatedPageState extends State<TopRatedPage> {
                                               //dbref.remove();
                                             }
                                             isliked26 = !isliked26;
-                                  },
-                                  icon: Icon(
-                                    CupertinoIcons.heart,
-                                    color: Colors.white,
-                                  )),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-                GridView.count(
-                  physics: ScrollPhysics(),
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 5,
-                  childAspectRatio: 0.5,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: new List<Widget>.generate(topratedmovies2.length,
-                      (index) {
-                    return Container(
-                      child: Column(
-                        children: [
-                          Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            elevation: 5,
-                            child: Image.network(
-                                // ignore: prefer_interpolation_to_compose_strings
-                                "https://image.tmdb.org/t/p/w500/" +
-                                    topratedmovies2[index].poster_path,
-                                fit: BoxFit.fill),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => MovieDesc(
-                                                  name: topratedmovies2[index]
-                                                      .title,
-                                                  backdrop_path:
-                                                      "https://image.tmdb.org/t/p/w500/" +
-                                                          topratedmovies2[index]
-                                                              .backdrop_path,
-                                                  overview:
-                                                      topratedmovies2[index]
-                                                          .overview,
-                                                  released_on:
-                                                      topratedmovies2[index]
-                                                          .release_date,
-                                                  vote_count:
-                                                      topratedmovies2[index]
-                                                          .vote_count,
-                                                  id: topratedmovies2[index]
-                                                      .id)));
-                                    },
-                                    icon: Icon(
-                                      CupertinoIcons.info_circle,
-                                      color: Colors.white,
-                                    )),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    if (isliked27) {
-                                              dbref.push().set(
-                                                  topratedmovies2[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked27 = !isliked27;
-                                  },
-                                  icon: Icon(
-                                    CupertinoIcons.heart,
-                                    color: Colors.white,
-                                  )),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-                GridView.count(
-                  physics: ScrollPhysics(),
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 5,
-                  childAspectRatio: 0.5,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: new List<Widget>.generate(topratedmovies3.length,
-                      (index) {
-                    return Container(
-                      child: Column(
-                        children: [
-                          Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            elevation: 5,
-                            child: Image.network(
-                                // ignore: prefer_interpolation_to_compose_strings
-                                "https://image.tmdb.org/t/p/w500/" +
-                                    topratedmovies3[index].poster_path,
-                                fit: BoxFit.fill),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => MovieDesc(
-                                                  name: topratedmovies3[index]
-                                                      .title,
-                                                  backdrop_path:
-                                                      "https://image.tmdb.org/t/p/w500/" +
-                                                          topratedmovies3[index]
-                                                              .backdrop_path,
-                                                  overview:
-                                                      topratedmovies3[index]
-                                                          .overview,
-                                                  released_on:
-                                                      topratedmovies3[index]
-                                                          .release_date,
-                                                  vote_count:
-                                                      topratedmovies3[index]
-                                                          .vote_count,
-                                                  id: topratedmovies3[index]
-                                                      .id)));
-                                    },
-                                    icon: Icon(
-                                      CupertinoIcons.info_circle,
-                                      color: Colors.white,
-                                    )),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    if (isliked28) {
-                                              dbref.push().set(
-                                                  topratedmovies3[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked28 = !isliked28;
-                                  },
-                                  icon: Icon(
-                                    CupertinoIcons.heart,
-                                    color: Colors.white,
-                                  )),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-                GridView.count(
-                  physics: ScrollPhysics(),
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 5,
-                  childAspectRatio: 0.5,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: new List<Widget>.generate(topratedmovies4.length,
-                      (index) {
-                    return Container(
-                      child: Column(
-                        children: [
-                          Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            elevation: 5,
-                            child: Image.network(
-                                // ignore: prefer_interpolation_to_compose_strings
-                                "https://image.tmdb.org/t/p/w500/" +
-                                    topratedmovies4[index].poster_path,
-                                fit: BoxFit.fill),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => MovieDesc(
-                                                  name: topratedmovies4[index]
-                                                      .title,
-                                                  backdrop_path:
-                                                      "https://image.tmdb.org/t/p/w500/" +
-                                                          topratedmovies4[index]
-                                                              .backdrop_path,
-                                                  overview:
-                                                      topratedmovies4[index]
-                                                          .overview,
-                                                  released_on:
-                                                      topratedmovies4[index]
-                                                          .release_date,
-                                                  vote_count:
-                                                      topratedmovies4[index]
-                                                          .vote_count,
-                                                  id: topratedmovies4[index]
-                                                      .id)));
-                                    },
-                                    icon: Icon(
-                                      CupertinoIcons.info_circle,
-                                      color: Colors.white,
-                                    )),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    if (isliked29) {
-                                              dbref.push().set(
-                                                  topratedmovies4[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked29 = !isliked29;
-                                  },
-                                  icon: Icon(
-                                    CupertinoIcons.heart,
-                                    color: Colors.white,
-                                  )),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-                GridView.count(
-                  physics: ScrollPhysics(),
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 5,
-                  childAspectRatio: 0.5,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: new List<Widget>.generate(topratedmovies5.length,
-                      (index) {
-                    return Container(
-                      child: Column(
-                        children: [
-                          Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)),
-                            elevation: 5,
-                            child: Image.network(
-                                // ignore: prefer_interpolation_to_compose_strings
-                                "https://image.tmdb.org/t/p/w500/" +
-                                    topratedmovies5[index].poster_path,
-                                fit: BoxFit.fill),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => MovieDesc(
-                                                  name: topratedmovies5[index]
-                                                      .title,
-                                                  backdrop_path:
-                                                      "https://image.tmdb.org/t/p/w500/" +
-                                                          topratedmovies5[index]
-                                                              .backdrop_path,
-                                                  overview:
-                                                      topratedmovies5[index]
-                                                          .overview,
-                                                  released_on:
-                                                      topratedmovies5[index]
-                                                          .release_date,
-                                                  vote_count:
-                                                      topratedmovies5[index]
-                                                          .vote_count,
-                                                  id: topratedmovies5[index]
-                                                      .id)));
-                                    },
-                                    icon: Icon(
-                                      CupertinoIcons.info_circle,
-                                      color: Colors.white,
-                                    )),
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    if (isliked30) {
-                                              dbref.push().set(
-                                                  topratedmovies5[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked30 = !isliked30;
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

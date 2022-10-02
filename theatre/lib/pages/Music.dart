@@ -64,7 +64,7 @@ class _MusicPageState extends State<MusicPage> {
             id: i['id']);
         musicmovies1.add(music1);
       }
-     for (var i in jsonDatatrending1['results']) {
+     for (var i in jsonDatatrending2['results']) {
         Music music2 = Music(
             title: i["title"],
             overview: i['overview'],
@@ -76,7 +76,7 @@ class _MusicPageState extends State<MusicPage> {
             id: i['id']);
         musicmovies1.add(music2);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending3['results']) {
         Music music3 = Music(
             title: i["title"],
             overview: i['overview'],
@@ -88,7 +88,7 @@ class _MusicPageState extends State<MusicPage> {
             id: i['id']);
         musicmovies1.add(music3);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending4['results']) {
         Music music4 = Music(
             title: i["title"],
             overview: i['overview'],
@@ -100,7 +100,7 @@ class _MusicPageState extends State<MusicPage> {
             id: i['id']);
         musicmovies1.add(music4);
       }
-      for (var i in jsonDatatrending1['results']) {
+      for (var i in jsonDatatrending5['results']) {
         Music music5 = Music(
             title: i["title"],
             overview: i['overview'],
