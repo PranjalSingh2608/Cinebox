@@ -146,8 +146,8 @@ class _DocumentryPageState extends State<DocumentryPage> {
                             elevation: 5,
                             child: Image.network(
                                 // ignore: prefer_interpolation_to_compose_strings
-                                "https://image.tmdb.org/t/p/w500/" +
-                                    documentries1[index].poster_path,
+                                "https://image.tmdb.org/t/p/w500/"+
+                                    documentries1[index].poster_path.toString(),
                                 fit: BoxFit.fill),
                           ),
                           Row(
@@ -163,7 +163,7 @@ class _DocumentryPageState extends State<DocumentryPage> {
                                                   name:documentries1[index]
                                                       .title,
                                                   backdrop_path:
-                                                      "https://image.tmdb.org/t/p/w500/" +
+                                                      "https://image.tmdb.org/t/p/w500/"+
                                                           documentries1[index]
                                                               .backdrop_path,
                                                   overview:

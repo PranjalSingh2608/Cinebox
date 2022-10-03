@@ -195,13 +195,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0"
-  flutter_lints:
-    dependency: "direct dev"
-    description:
-      name: flutter_lints
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -282,13 +275,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.7.0"
-  lints:
-    dependency: transitive
+  lottie:
+    dependency: "direct main"
     description:
-      name: lints
+      name: lottie
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "1.4.3"
   matcher:
     dependency: transitive
     description:
@@ -645,5 +638,5 @@ packages:
     source: hosted
     version: "8.1.0"
 sdks:
-  dart: ">=2.17.6 <3.0.0"
-  flutter: ">=3.0.0"
+  dart: ">=2.18.0 <3.0.0"
+  flutter: ">=3.3.0"

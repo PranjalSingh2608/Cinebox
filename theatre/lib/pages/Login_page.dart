@@ -1,3 +1,4 @@
+import 'package:lottie/lottie.dart';
 import 'package:theatre/pages/Home_Page.dart';
 import 'package:theatre/utils/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,20 +44,10 @@ class _Login_PageState extends State<Login_Page> {
                       SizedBox(
                         height: 70,
                       ),
-                      ClipRRect(
-                        child: Image.asset("assets/images/Pranjal01.png"),
-                      ),
-                      Text(
-                        "Login",
-                        style: TextStyle(
-                          fontFamily: GoogleFonts.lato().fontFamily,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                        ),
-                      ),
                       SizedBox(
-                        height: 40,
+                        height: 200,
+                        width: 200,
+                        child: Lottie.asset("assets/animations/welcome.json"),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(15),
@@ -84,7 +75,7 @@ class _Login_PageState extends State<Login_Page> {
                                   hintStyle: TextStyle(
                                     color: Color.fromARGB(255, 68, 68, 68),
                                   )),
-                                validator: (String? value) {
+                              validator: (String? value) {
                                 if (value != null && value.isEmpty) {
                                   return "Username cannot be empty";
                                 }
@@ -119,7 +110,7 @@ class _Login_PageState extends State<Login_Page> {
                                   hintStyle: TextStyle(
                                     color: Color.fromARGB(255, 68, 68, 68),
                                   )),
-                                 validator: (String? value) {
+                              validator: (String? value) {
                                 if (value != null && value.isEmpty) {
                                   return "Password cannot be empty";
                                 } else if (value!.length < 6) {
@@ -133,34 +124,35 @@ class _Login_PageState extends State<Login_Page> {
                             ),
                             InkWell(
                               onTap: () async {
-                                try{
-                                await FirebaseAuth.instance
-                                    .signInWithEmailAndPassword(
-                                        email: email.text,
-                                        password: password.text);
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return Home_page();
-                                }));
-                                
-                                setState(() {
-                                  isLoading = false;
-                                });
-                              }on FirebaseAuthException catch (e) {
-                                print('failed with error code: ${e.code}');
-                                print(e.message);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    backgroundColor: Color.fromARGB(255,68,68,68),
-                                    content: const Text(
+                                try {
+                                  await FirebaseAuth.instance
+                                      .signInWithEmailAndPassword(
+                                          email: email.text,
+                                          password: password.text);
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return Home_page();
+                                  }));
+
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                } on FirebaseAuthException catch (e) {
+                                  print('failed with error code: ${e.code}');
+                                  print(e.message);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor:
+                                          Color.fromARGB(255, 68, 68, 68),
+                                      content: const Text(
                                         'Incorrect Password Or Email',
-                                        style:TextStyle(
+                                        style: TextStyle(
                                           color: Colors.white,
                                         ),
-                                        ),
-                                  ),
-                                );
-                              }
+                                      ),
+                                    ),
+                                  );
+                                }
                                 await Shared.getUserSharedPrefernces()
                                     .then((value) {
                                   setState(() {

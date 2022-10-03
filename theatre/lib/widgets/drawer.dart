@@ -50,15 +50,14 @@ class _MyDrawerState extends State<MyDrawer> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/Pranjal02.png"),
-                          fit: BoxFit.cover),
-                    ),
-                  ),
+                  DrawerHeader(
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Image.asset(
+                            'assets/images/Pranjal02.png',
+                            height: 190,
+                            width: 190,
+                          ))),
                   ListTile(
                     title: TextButton(
                       child: Text(

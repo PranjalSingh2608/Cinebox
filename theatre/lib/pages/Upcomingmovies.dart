@@ -152,8 +152,8 @@ class _UpcomingPageState extends State<UpcomingPage> {
                             elevation: 5,
                             child: Image.network(
                                 // ignore: prefer_interpolation_to_compose_strings
-                                "https://image.tmdb.org/t/p/w500/" +
-                                    upcomingmovies1[index].poster_path,
+                                "https://image.tmdb.org/t/p/w500/"+
+                                    upcomingmovies1[index].poster_path.toString(),
                                 fit: BoxFit.fill),
                           ),
                           Row(
@@ -169,7 +169,7 @@ class _UpcomingPageState extends State<UpcomingPage> {
                                                   name: upcomingmovies1[index]
                                                       .title,
                                                   backdrop_path:
-                                                      "https://image.tmdb.org/t/p/w500/" +
+                                                      "https://image.tmdb.org/t/p/w500/"+
                                                           upcomingmovies1[index]
                                                               .backdrop_path,
                                                   overview:

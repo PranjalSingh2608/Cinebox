@@ -24,7 +24,6 @@ import 'package:theatre/widgets/appbar.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/drawer.dart';
-
 bool isliked1 = false;
 bool isliked2 = false;
 bool isliked3 = false;
