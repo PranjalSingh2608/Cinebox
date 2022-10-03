@@ -194,9 +194,15 @@ class _HorrorPageState extends State<HorrorPage> {
                                     //         isliked43 = !isliked43;
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                    content: const Text(
-                                        "Feature Coming Soon"),
-                                  ),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
+                                        ),
                                     );
                                   },
                                   icon: Icon(

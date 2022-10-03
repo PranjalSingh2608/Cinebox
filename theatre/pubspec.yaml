@@ -47,6 +47,8 @@ dependencies:
   fluttertoast: ^8.0.9
   shared_preferences: ^2.0.15
   flutter_launcher_icons: ^0.10.0
+  url_launcher: ^6.1.6
+  font_awesome_flutter: ^10.2.1
 flutter_icons: 
   image_path: "assets/images/Pranjal03.png"
   android: true

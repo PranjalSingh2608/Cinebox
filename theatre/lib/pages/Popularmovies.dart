@@ -196,9 +196,15 @@ class _PopularPageState extends State<PopularPage> {
                                     //         isliked41 = !isliked41;
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                    content: const Text(
-                                        "Feature Coming Soon"),
-                                  ),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
+                                        ),
                                     );
                                   },
                                   icon: Icon(

@@ -84,6 +84,12 @@ class _Login_PageState extends State<Login_Page> {
                                   hintStyle: TextStyle(
                                     color: Color.fromARGB(255, 68, 68, 68),
                                   )),
+                                validator: (String? value) {
+                                if (value != null && value.isEmpty) {
+                                  return "Username cannot be empty";
+                                }
+                                return null;
+                              },
                             ),
                             SizedBox(
                               height: 15,
@@ -113,12 +119,21 @@ class _Login_PageState extends State<Login_Page> {
                                   hintStyle: TextStyle(
                                     color: Color.fromARGB(255, 68, 68, 68),
                                   )),
+                                 validator: (String? value) {
+                                if (value != null && value.isEmpty) {
+                                  return "Password cannot be empty";
+                                } else if (value!.length < 6) {
+                                  return "Password need to be more than 6 digits";
+                                }
+                                return null;
+                              },
                             ),
                             SizedBox(
                               height: 50,
                             ),
                             InkWell(
                               onTap: () async {
+                                try{
                                 await FirebaseAuth.instance
                                     .signInWithEmailAndPassword(
                                         email: email.text,
@@ -127,10 +142,25 @@ class _Login_PageState extends State<Login_Page> {
                                     MaterialPageRoute(builder: (context) {
                                   return Home_page();
                                 }));
+                                
                                 setState(() {
                                   isLoading = false;
                                 });
-
+                              }on FirebaseAuthException catch (e) {
+                                print('failed with error code: ${e.code}');
+                                print(e.message);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Color.fromARGB(255,68,68,68),
+                                    content: const Text(
+                                        'Incorrect Password Or Email',
+                                        style:TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                        ),
+                                  ),
+                                );
+                              }
                                 await Shared.getUserSharedPrefernces()
                                     .then((value) {
                                   setState(() {

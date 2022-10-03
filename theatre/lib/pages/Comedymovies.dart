@@ -194,9 +194,15 @@ class _ComedyPageState extends State<ComedyPage> {
                                     //         isliked46 = !isliked46;
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                    content: const Text(
-                                        "Feature Coming Soon"),
-                                  ),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
+                                        ),
                                     );
                                   },
                                   icon: Icon(

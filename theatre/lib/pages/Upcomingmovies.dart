@@ -12,7 +12,9 @@ import 'package:theatre/widgets/appbar.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/drawer.dart';
+
 bool isliked15 = false;
+
 class UpcomingPage extends StatefulWidget {
   const UpcomingPage({Key? key}) : super(key: key);
 
@@ -127,102 +129,102 @@ class _UpcomingPageState extends State<UpcomingPage> {
             preferredSize: const Size.fromHeight(56), child: MyAppBar()),
         body: SingleChildScrollView(
           child: Container(
-                  child: Column(
-                    children: [
-                      GridView.count(
-                        physics: ScrollPhysics(),
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 30,
-                        crossAxisSpacing: 5,
-                        childAspectRatio: 0.5,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: new List<Widget>.generate(
-                            upcomingmovies1.length, (index) {
-                          return Container(
-                            child: Column(
-                              children: [
-                                Card(
-                                  semanticContainer: true,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10.0)),
-                                  elevation: 5,
-                                  child: Image.network(
-                                      // ignore: prefer_interpolation_to_compose_strings
-                                      "https://image.tmdb.org/t/p/w500/" +
-                                          upcomingmovies1[index].poster_path,
-                                      fit: BoxFit.fill),
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: IconButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) => MovieDesc(
-                                                        name: upcomingmovies1[
-                                                                index]
-                                                            .title,
-                                                        backdrop_path:
-                                                            "https://image.tmdb.org/t/p/w500/" +
-                                                                upcomingmovies1[
-                                                                        index]
-                                                                    .backdrop_path,
-                                                        overview:
-                                                            upcomingmovies1[index]
-                                                                .overview,
-                                                        released_on:
-                                                            upcomingmovies1[index]
-                                                                .release_date,
-                                                        vote_count:
-                                                            upcomingmovies1[
-                                                                    index]
-                                                                .vote_count,
-                                                        id: upcomingmovies1[
-                                                                index]
-                                                            .id)));
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.info_circle,
-                                            color: Colors.white,
-                                          )),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          // if (isliked15) {
-                                          //     dbref.push().set(
-                                          //         upcomingmovies1[index].poster_path);
-                                          //   } else {
-                                          //     //dbref.remove();
-                                          //   }
-                                          //   isliked15 = !isliked15;
-                                          ScaffoldMessenger.of(context).showSnackBar(
+            child: Column(
+              children: [
+                GridView.count(
+                  physics: ScrollPhysics(),
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 30,
+                  crossAxisSpacing: 5,
+                  childAspectRatio: 0.5,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: new List<Widget>.generate(upcomingmovies1.length,
+                      (index) {
+                    return Container(
+                      child: Column(
+                        children: [
+                          Card(
+                            semanticContainer: true,
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
+                            elevation: 5,
+                            child: Image.network(
+                                // ignore: prefer_interpolation_to_compose_strings
+                                "https://image.tmdb.org/t/p/w500/" +
+                                    upcomingmovies1[index].poster_path,
+                                fit: BoxFit.fill),
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10.0),
+                                child: IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => MovieDesc(
+                                                  name: upcomingmovies1[index]
+                                                      .title,
+                                                  backdrop_path:
+                                                      "https://image.tmdb.org/t/p/w500/" +
+                                                          upcomingmovies1[index]
+                                                              .backdrop_path,
+                                                  overview:
+                                                      upcomingmovies1[index]
+                                                          .overview,
+                                                  released_on:
+                                                      upcomingmovies1[index]
+                                                          .release_date,
+                                                  vote_count:
+                                                      upcomingmovies1[index]
+                                                          .vote_count,
+                                                  id: upcomingmovies1[index]
+                                                      .id)));
+                                    },
+                                    icon: Icon(
+                                      CupertinoIcons.info_circle,
+                                      color: Colors.white,
+                                    )),
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    // if (isliked15) {
+                                    //     dbref.push().set(
+                                    //         upcomingmovies1[index].poster_path);
+                                    //   } else {
+                                    //     //dbref.remove();
+                                    //   }
+                                    //   isliked15 = !isliked15;
+                                    ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                    content: const Text(
-                                        "Feature Coming Soon"),
-                                  ),
+                                        content: const Text(
+                                          "Feature Coming Soon",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        backgroundColor:
+                                            Color.fromARGB(255, 68, 68, 68),
+                                      ),
                                     );
-                                        },
-                                        icon: Icon(
-                                          CupertinoIcons.heart,
-                                          color: Colors.white,
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
+                                  },
+                                  icon: Icon(
+                                    CupertinoIcons.heart,
+                                    color: Colors.white,
+                                  )),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  }),
                 ),
+              ],
+            ),
+          ),
         ),
       ),
     );

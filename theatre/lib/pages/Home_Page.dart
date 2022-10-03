@@ -440,13 +440,16 @@ class _Home_pageState extends State<Home_page> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Trending Now",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: const Text(
+                    "Trending Now",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -543,8 +546,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -561,12 +570,15 @@ class _Home_pageState extends State<Home_page> {
                 SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Top Rated",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: const Text(
+                    "Top Rated",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -662,8 +674,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -680,12 +698,15 @@ class _Home_pageState extends State<Home_page> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Upcoming",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: const Text(
+                    "Upcoming",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -781,8 +802,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -799,12 +826,15 @@ class _Home_pageState extends State<Home_page> {
                 SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Popular",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: const Text(
+                    "Popular",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -899,8 +929,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -915,12 +951,15 @@ class _Home_pageState extends State<Home_page> {
                   ),
                 ),
                 SizedBox(height: 10),
-                const Text(
-                  "Action",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: const Text(
+                    "Action",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1014,8 +1053,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1032,12 +1077,15 @@ class _Home_pageState extends State<Home_page> {
                 SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Adventure",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: const Text(
+                    "Adventure",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1133,8 +1181,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1151,12 +1205,15 @@ class _Home_pageState extends State<Home_page> {
                 SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Comedy",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: const Text(
+                    "Comedy",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1250,8 +1307,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1268,12 +1331,15 @@ class _Home_pageState extends State<Home_page> {
                 SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Thriller",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: const Text(
+                    "Thriller",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1369,8 +1435,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1387,12 +1459,15 @@ class _Home_pageState extends State<Home_page> {
                 SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  "Sci Fi",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: const Text(
+                    "Sci Fi",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1485,8 +1560,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1500,12 +1581,15 @@ class _Home_pageState extends State<Home_page> {
                     },
                   ),
                 ),
-                const Text(
-                  "Horror",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: const Text(
+                    "Horror",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1600,8 +1684,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1615,12 +1705,15 @@ class _Home_pageState extends State<Home_page> {
                     },
                   ),
                 ),
-                const Text(
-                  "History",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: const Text(
+                    "History",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1716,8 +1809,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1731,12 +1830,15 @@ class _Home_pageState extends State<Home_page> {
                     },
                   ),
                 ),
-                const Text(
-                  "Documentries",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: const Text(
+                    "Documentries",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1829,8 +1931,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },
@@ -1844,12 +1952,15 @@ class _Home_pageState extends State<Home_page> {
                     },
                   ),
                 ),
-                const Text(
-                  "Music",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0),
+                  child: const Text(
+                    "Music",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -1936,8 +2047,14 @@ class _Home_pageState extends State<Home_page> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
-                                          content:
-                                              const Text("Feature Coming Soon"),
+                                          content: const Text(
+                                            "Feature Coming Soon",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 68, 68, 68),
                                         ),
                                       );
                                     },

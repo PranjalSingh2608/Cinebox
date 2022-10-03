@@ -71,6 +71,18 @@ class _MovieDescState extends State<MovieDesc> {
                     SizedBox(
                       height: 10,
                     ),
+                    Text(
+                      'Storyline',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+
+                        color: Colors.white,
+                        decoration: TextDecoration.overline,
+                        fontSize: 20,
+                        //fontFamily: 'bebas'
+                      ),
+                    ),
                     Row(
                       children: [
                         Flexible(
@@ -98,10 +110,10 @@ class _MovieDescState extends State<MovieDesc> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            'Vote Count ⭐:',
+                            'Vote Count ⭐ : ',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
                                 //fontFamily: 'bebas',
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
@@ -112,7 +124,7 @@ class _MovieDescState extends State<MovieDesc> {
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 18,
                                 //fontFamily: 'bebas',
                               ),
                             ),
@@ -127,10 +139,10 @@ class _MovieDescState extends State<MovieDesc> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Launch Date:',
+                          'Launch Date : ',
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               //fontFamily: 'bebas',
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
@@ -143,7 +155,7 @@ class _MovieDescState extends State<MovieDesc> {
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 18,
                               //fontFamily: 'bebas',
                             ),
                           ),
