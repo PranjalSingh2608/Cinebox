@@ -185,13 +185,19 @@ class _DocumentryPageState extends State<DocumentryPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked45) {
-                                              dbref.push().set(
-                                                  documentries1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked45 = !isliked45;
+                                    // if (isliked45) {
+                                    //           dbref.push().set(
+                                    //               documentries1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked45 = !isliked45;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

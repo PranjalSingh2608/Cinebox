@@ -185,13 +185,19 @@ class _ComedyPageState extends State<ComedyPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked46) {
-                                              dbref.push().set(
-                                                 comedymovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked46 = !isliked46;
+                                    // if (isliked46) {
+                                    //           dbref.push().set(
+                                    //              comedymovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked46 = !isliked46;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:theatre/pages/Signup_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -181,9 +182,10 @@ class Home_page extends StatefulWidget {
 }
 
 class _Home_pageState extends State<Home_page> {
-  DatabaseReference dbref =
-      FirebaseDatabase.instance.ref().child('Liked Videos')
-  .child(FirebaseAuth.instance.currentUser!.uid);
+  DatabaseReference dbref = FirebaseDatabase.instance
+      .ref()
+      .child('Liked Videos')
+      .child(FirebaseAuth.instance.currentUser!.uid);
   //=====================================================================================================================================//
   final String urltrending =
       "https://api.themoviedb.org/3/trending/all/day?api_key=b3683b201570bdba7301facb6448362c";
@@ -228,7 +230,10 @@ class _Home_pageState extends State<Home_page> {
   @override
   void initState() {
     getJsonData();
-    dbref = FirebaseDatabase.instance.ref().child('Liked Videos').child(FirebaseAuth.instance.currentUser!.uid);
+    dbref = FirebaseDatabase.instance
+        .ref()
+        .child('Liked Videos')
+        .child(FirebaseAuth.instance.currentUser!.uid);
     super.initState();
   }
 
@@ -437,6 +442,7 @@ class _Home_pageState extends State<Home_page> {
               children: [
                 const Text(
                   "Trending Now",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -527,13 +533,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked1) {
-                                        dbref.push().set(
-                                            trendingMovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked1 = !isliked1;
+                                      //   if (isliked1) {
+                                      //     dbref.push().set(
+                                      //         trendingMovies[index].poster_path);
+                                      //   } else {
+                                      //     //dbref.remove();
+                                      //   }
+                                      //   isliked1 = !isliked1;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -639,13 +652,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked2) {
-                                        dbref.push().set(
-                                            topRatedMovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked2 = !isliked2;
+                                      // if (isliked2) {
+                                      //   dbref.push().set(
+                                      //       topRatedMovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked2 = !isliked2;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -751,13 +771,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked3) {
-                                        dbref.push().set(
-                                            upcomingmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked3 = !isliked3;
+                                      // if (isliked3) {
+                                      //   dbref.push().set(
+                                      //       upcomingmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked3 = !isliked3;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -862,13 +889,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked4) {
-                                        dbref.push().set(
-                                            popularmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked4 = !isliked4;
+                                      // if (isliked4) {
+                                      //   dbref.push().set(
+                                      //       popularmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked4 = !isliked4;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -970,13 +1004,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked5) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked5 = !isliked5;
+                                      // if (isliked5) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked5 = !isliked5;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1082,13 +1123,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked6) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked6 = !isliked6;
+                                      // if (isliked6) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked6 = !isliked6;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1192,13 +1240,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked7) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked7 = !isliked7;
+                                      // if (isliked7) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked7 = !isliked7;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1304,13 +1359,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked8) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked8 = !isliked8;
+                                      // if (isliked8) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked8 = !isliked8;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1413,13 +1475,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked9) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked9 = !isliked9;
+                                      // if (isliked9) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked9 = !isliked9;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1521,13 +1590,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked10) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked10 = !isliked10;
+                                      // if (isliked10) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked10 = !isliked10;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1630,13 +1706,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked11) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked11 = !isliked11;
+                                      // if (isliked11) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked11 = !isliked11;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1736,13 +1819,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked12) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked12 = !isliked12;
+                                      // if (isliked12) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked12 = !isliked12;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],
@@ -1836,13 +1926,20 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      if (isliked13) {
-                                        dbref.push().set(
-                                            actionmovies[index].poster_path);
-                                      } else {
-                                        //dbref.remove();
-                                      }
-                                      isliked13 = !isliked13;
+                                      // if (isliked13) {
+                                      //   dbref.push().set(
+                                      //       actionmovies[index].poster_path);
+                                      // } else {
+                                      //   //dbref.remove();
+                                      // }
+                                      // isliked13 = !isliked13;
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              const Text("Feature Coming Soon"),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ],

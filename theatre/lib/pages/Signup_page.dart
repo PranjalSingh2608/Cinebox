@@ -30,24 +30,24 @@ class _SignUp_PageState extends State<SignUp_Page> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color:Colors.black,
+      color: Colors.black,
       child: Scaffold(
         backgroundColor: Colors.black87,
         body: Scrollbar(
           child: FutureBuilder(
               future: _firebaseapp,
               builder: ((context, snapshot) {
-                if (snapshot.connectionState ==
-                    ConnectionState.waiting) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
                   return CircularProgressIndicator();
                 }
                 return SingleChildScrollView(
                   child: Column(
                     children: [
-                      Icon(
-                        CupertinoIcons.lock,
-                        size: 60,
-                        color: Colors.white,
+                      SizedBox(
+                        height: 70,
+                      ),
+                      ClipRRect(
+                        child: Image.asset("assets/images/Pranjal01.png"),
                       ),
                       Text(
                         "Sign Up",
@@ -55,106 +55,105 @@ class _SignUp_PageState extends State<SignUp_Page> {
                           fontFamily: GoogleFonts.lato().fontFamily,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Colors.grey,
                         ),
                       ),
+                      SizedBox(
+                        height: 40,
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
                             TextFormField(
                               controller: email,
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
-                                  fillColor: Colors.white54,
+                                  prefixIcon: Icon(Icons.perm_identity,
+                                      color: Color.fromARGB(255, 68, 68, 68)),
+                                  fillColor: Colors.black,
                                   filled: true,
                                   contentPadding:
                                       EdgeInsets.fromLTRB(5, 8, 5, 0),
                                   border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                     borderSide: new BorderSide(
-                                      color: Colors.transparent,
+                                      color: Color.fromARGB(255, 68, 68, 68),
                                       width: 1.0,
                                     ),
                                   ),
                                   labelText: "Email",
-                                  labelStyle:
-                                      TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.white),
                                   hintText: "Enter your Email",
                                   hintStyle: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 68, 68, 68),
                                   )),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             TextFormField(
                               controller: password,
                               obscureText: true,
                               decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.lock,
+                                      color: Color.fromARGB(255, 68, 68, 68)),
                                   contentPadding:
                                       EdgeInsets.fromLTRB(5, 8, 5, 8),
-                                  fillColor: Colors.white54,
+                                  fillColor: Colors.black,
                                   filled: true,
                                   border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                     borderSide: new BorderSide(
-                                      color: Colors.transparent,
+                                      color: Color.fromARGB(255, 68, 68, 68),
                                       width: 1.0,
                                     ),
                                   ),
                                   labelText: "Password",
-                                  labelStyle:
-                                      TextStyle(color: Colors.white),
+                                  labelStyle: TextStyle(color: Colors.white),
                                   hintText: "Enter your Password",
                                   hintStyle: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 68, 68, 68),
                                   )),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 50,
                             ),
                             InkWell(
-                                onTap: () async {
-                                  
-                                  await FirebaseAuth.instance
-                                      .createUserWithEmailAndPassword(
-                                          email: email.text,
-                                          password: password.text);
-                                  Navigator.pushNamed(
-                                      context, MyRoutes.HomeRoute);
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                },
-                                child: AnimatedContainer(
-                                  width: 120,
-                                  height: 50,
-                                  duration: Duration(milliseconds: 500),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top:10.0),
-                                    child: const Text(
-                                      "Sign Up",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
+                              onTap: () async {
+                                await FirebaseAuth.instance
+                                    .createUserWithEmailAndPassword(
+                                        email: email.text,
+                                        password: password.text);
+                                Navigator.pushNamed(
+                                    context, MyRoutes.HomeRoute);
+                                setState(() {
+                                  isLoading = false;
+                                });
+                              },
+                              child: AnimatedContainer(
+                                width: 120,
+                                height: 50,
+                                duration: Duration(milliseconds: 500),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
+                                  child: const Text(
+                                    "Sign Up",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 177, 177, 177),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
                                     ),
                                   ),
-                                  decoration: BoxDecoration(
+                                ),
+                                decoration: BoxDecoration(
                                     color: Color.fromARGB(255, 68, 68, 68),
-                                    borderRadius: BorderRadius.circular(10)
-                                  ),
-                                ),
-
-                                ),
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   "Already have an account,",

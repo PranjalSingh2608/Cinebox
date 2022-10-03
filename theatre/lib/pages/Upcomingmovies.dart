@@ -195,13 +195,19 @@ class _UpcomingPageState extends State<UpcomingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          if (isliked15) {
-                                              dbref.push().set(
-                                                  upcomingmovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked15 = !isliked15;
+                                          // if (isliked15) {
+                                          //     dbref.push().set(
+                                          //         upcomingmovies1[index].poster_path);
+                                          //   } else {
+                                          //     //dbref.remove();
+                                          //   }
+                                          //   isliked15 = !isliked15;
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,

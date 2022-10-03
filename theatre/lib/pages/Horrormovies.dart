@@ -185,13 +185,19 @@ class _HorrorPageState extends State<HorrorPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked43) {
-                                              dbref.push().set(
-                                                  horrormovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked43 = !isliked43;
+                                    // if (isliked43) {
+                                    //           dbref.push().set(
+                                    //               horrormovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked43 = !isliked43;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

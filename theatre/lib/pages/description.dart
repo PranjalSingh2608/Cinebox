@@ -38,15 +38,18 @@ class _MovieDescState extends State<MovieDesc> {
               children: [
                 Column(
                   children: [
-                    Card(
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                      elevation: 5,
-                      child: Image.network(widget.backdrop_path,
-                          // ignore: prefer_interpolation_to_compose_strings
-                          fit: BoxFit.fill),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        semanticContainer: true,
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0)),
+                        elevation: 5,
+                        child: Image.network(widget.backdrop_path,
+                            // ignore: prefer_interpolation_to_compose_strings
+                            fit: BoxFit.fill),
+                      ),
                     ),
                     Row(
                       children: [
@@ -71,55 +74,63 @@ class _MovieDescState extends State<MovieDesc> {
                     Row(
                       children: [
                         Flexible(
-                          child: Text(
-                            widget.overview,
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              fontSize: 20,
-                              //fontFamily: 'bebas',
-                              color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              widget.overview,
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                fontSize: 18,
+                                //fontFamily: 'europa',
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
-                    Row(
-                      children: [
-                        const Text(
-                          'Vote Count ⭐:',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                              fontSize: 25,
-                              //fontFamily: 'bebas',
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Flexible(
-                          child: Text(
-                            widget.vote_count.toString(),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Vote Count ⭐:',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              //fontFamily: 'bebas',
+                                fontSize: 20,
+                                //fontFamily: 'bebas',
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Flexible(
+                            child: Text(
+                              widget.vote_count.toString(),
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                //fontFamily: 'bebas',
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    // SizedBox(
+                    //   height: 10,
+                    // ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
                           'Launch Date:',
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 20,
                               //fontFamily: 'bebas',
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
@@ -132,7 +143,7 @@ class _MovieDescState extends State<MovieDesc> {
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 25,
+                              fontSize: 20,
                               //fontFamily: 'bebas',
                             ),
                           ),

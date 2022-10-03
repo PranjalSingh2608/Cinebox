@@ -201,13 +201,19 @@ class _TrendingPageState extends State<TrendingPage> {
                                     ),
                                     IconButton(
                                         onPressed: () {
-                                          if (isliked21) {
-                                              dbref.push().set(
-                                                  trendingmovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked21 = !isliked21;
+                                          // if (isliked21) {
+                                          //     dbref.push().set(
+                                          //         trendingmovies1[index].poster_path);
+                                          //   } else {
+                                          //     //dbref.remove();
+                                          //   }
+                                          //   isliked21 = !isliked21;
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                         },
                                         icon: Icon(
                                           CupertinoIcons.heart,

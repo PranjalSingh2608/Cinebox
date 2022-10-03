@@ -9,8 +9,8 @@ import 'package:theatre/widgets/share.dart';
 import 'pages/Home_Page.dart';
 import 'pages/Login_page.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
-   var isLogin;
+  var isLogin;
 
   checkUserLoginState() async {
     await Shared.getUserSharedPrefernces().then(
@@ -38,22 +38,27 @@ class _MyAppState extends State<MyApp> {
       },
     );
   }
-  
 
   void iniState() {
     checkUserLoginState();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.grey,
         textTheme: GoogleFonts.latoTextTheme(
-          Theme.of(context).textTheme,
+          Theme.of(context).textTheme.apply(
+                bodyColor: Colors.white,
+              ),
         ),
       ),
-      initialRoute:FirebaseAuth.instance.currentUser != null ? '/home' : '/login',
+      initialRoute:
+          FirebaseAuth.instance.currentUser != null ? '/home' : '/login',
       routes: {
         MyRoutes.SignUpRoute: ((context) => SignUp_Page()),
         MyRoutes.HomeRoute: ((context) => Home_page()),

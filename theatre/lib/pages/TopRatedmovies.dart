@@ -185,13 +185,19 @@ class _TopRatedPageState extends State<TopRatedPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked26) {
-                                              dbref.push().set(
-                                                  topratedmovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked26 = !isliked26;
+                                    // if (isliked26) {
+                                    //           dbref.push().set(
+                                    //               topratedmovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked26 = !isliked26;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

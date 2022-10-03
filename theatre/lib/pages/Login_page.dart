@@ -40,10 +40,11 @@ class _Login_PageState extends State<Login_Page> {
                 return SingleChildScrollView(
                   child: Column(
                     children: [
-                      Icon(
-                        CupertinoIcons.device_phone_portrait,
-                        size: 60,
-                        color: Colors.white,
+                      SizedBox(
+                        height: 70,
+                      ),
+                      ClipRRect(
+                        child: Image.asset("assets/images/Pranjal01.png"),
                       ),
                       Text(
                         "Login",
@@ -51,11 +52,14 @@ class _Login_PageState extends State<Login_Page> {
                           fontFamily: GoogleFonts.lato().fontFamily,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Colors.grey,
                         ),
                       ),
+                      SizedBox(
+                        height: 40,
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
                             TextFormField(
@@ -63,7 +67,9 @@ class _Login_PageState extends State<Login_Page> {
                               decoration: InputDecoration(
                                   contentPadding:
                                       EdgeInsets.fromLTRB(5, 8, 5, 0),
-                                  fillColor: Colors.white54,
+                                  prefixIcon: Icon(Icons.perm_identity,
+                                      color: Color.fromARGB(255, 68, 68, 68)),
+                                  fillColor: Colors.black,
                                   filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10.0),
@@ -76,19 +82,23 @@ class _Login_PageState extends State<Login_Page> {
                                   labelStyle: TextStyle(color: Colors.white),
                                   hintText: "Enter your Email",
                                   hintStyle: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 68, 68, 68),
                                   )),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 15,
                             ),
                             TextFormField(
                               controller: password,
                               obscureText: true,
                               decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    color: Color.fromARGB(255, 68, 68, 68),
+                                  ),
                                   contentPadding:
                                       EdgeInsets.fromLTRB(5, 8, 5, 0),
-                                  fillColor: Colors.white54,
+                                  fillColor: Colors.black,
                                   filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10.0),
@@ -101,11 +111,11 @@ class _Login_PageState extends State<Login_Page> {
                                   labelStyle: TextStyle(color: Colors.white),
                                   hintText: "Enter your Password",
                                   hintStyle: TextStyle(
-                                    color: Colors.white,
+                                    color: Color.fromARGB(255, 68, 68, 68),
                                   )),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 50,
                             ),
                             InkWell(
                               onTap: () async {
@@ -138,7 +148,7 @@ class _Login_PageState extends State<Login_Page> {
                                     "Login",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.grey,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
                                     ),
@@ -153,7 +163,7 @@ class _Login_PageState extends State<Login_Page> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  " Dont't have an account,",
+                                  " Don't have an account,",
                                   style: TextStyle(
                                     color: Colors.white54,
                                   ),

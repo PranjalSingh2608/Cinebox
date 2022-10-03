@@ -185,13 +185,19 @@ class _AdventurePageState extends State<AdventurePage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked47) {
-                                              dbref.push().set(
-                                                  adventuremovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked47 = !isliked47;
+                                    // if (isliked47) {
+                                    //           dbref.push().set(
+                                    //               adventuremovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked47 = !isliked47;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

@@ -18,6 +18,7 @@ import 'package:theatre/pages/Thrillermovies.dart';
 import 'package:theatre/pages/TopRatedmovies.dart';
 import 'package:theatre/pages/Trendingmovies.dart';
 import 'package:theatre/pages/Upcomingmovies.dart';
+import 'package:theatre/utils/routes.dart';
 
 List<bool> _likes = List.filled(1000, true);
 
@@ -49,14 +50,30 @@ class _MyDrawerState extends State<MyDrawer> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  DrawerHeader(
-                      padding: EdgeInsets.zero,
-                      child: const Text("CINEBOX",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ))),
+                  Container(
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/Pranjal02.png"),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  ListTile(
+                    title: TextButton(
+                      child: Text(
+                        "Home",
+                        textAlign: TextAlign.center,
+                        textScaleFactor: 1.2,
+                        style: TextStyle(
+                          color: Colors.white54,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, MyRoutes.HomeRoute);
+                      },
+                    ),
+                  ),
                   ListTile(
                     title: TextButton(
                       child: Text(

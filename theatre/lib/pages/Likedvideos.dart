@@ -40,16 +40,16 @@ class _LikedVideosState extends State<LikedVideos> {
       .ref()
       .child("Liked Videos")
       .child(FirebaseAuth.instance.currentUser!.uid);
-  @override
-  void initState() {
-    print("Hello");
-    getUsers();
-    DatabaseReference dbref = FirebaseDatabase.instance
-        .ref()
-        .child('Liked Videos')
-        .child(FirebaseAuth.instance.currentUser!.uid);
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   print("Hello");
+  //   getUsers();
+  //   DatabaseReference dbref = FirebaseDatabase.instance
+  //       .ref()
+  //       .child('Liked Videos')
+  //       .child(FirebaseAuth.instance.currentUser!.uid);
+  //   super.initState();
+  // }
 
   getUsers() async {
     final snapshot = await FirebaseDatabase.instance
@@ -86,17 +86,17 @@ class _LikedVideosState extends State<LikedVideos> {
           child: Container(
             child: Column(
               children: [
-                const Text(
-                  "Liked Movies",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
+                // const Text(
+                //   "Liked Movies",
+                //   textAlign: TextAlign.center,
+                //   style: TextStyle(
+                //     fontSize: 22,
+                //     fontWeight: FontWeight.bold,
+                //     color: Colors.white,
+                //   ),
+                // ),
                 SizedBox(
-                  height: 10,
+                  height: 280,
                 ),
                 // GridView.count(
                 //   physics: ScrollPhysics(),
@@ -134,35 +134,42 @@ class _LikedVideosState extends State<LikedVideos> {
                 //   }),
                 // ),
                 Container(
-                  
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView.builder(
-                    itemCount: list.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {},
-                        child: Container(
-                          width: 140,
-                          child: Column(
-                            children: [
-                              //Card(
-                              // semanticContainer: true,
-                              // clipBehavior: Clip.antiAliasWithSaveLayer,
-                              // shape: RoundedRectangleBorder(
-                              //     borderRadius: BorderRadius.circular(10.0)),
-                              // elevation: 5,
-                              Image.network(
-                                  "https://image.tmdb.org/t/p/w500/" +
-                                      list[index],
-                                  fit: BoxFit.fill),
-                              //),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
+                  child: Center(
+                    child: const Text(
+                      "Feature Coming Soon",
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
                   ),
+                  // height: MediaQuery.of(context).size.height,
+                  // child: ListView.builder(
+                  //   itemCount: list.length,
+                  //   scrollDirection: Axis.vertical,
+                  //   itemBuilder: (context, index) {
+                  //     return InkWell(
+                  //       onTap: () {},
+                  //       child: Container(
+                  //         width: 140,
+                  //         child: Column(
+                  //           children: [
+                  //             //Card(
+                  //             // semanticContainer: true,
+                  //             // clipBehavior: Clip.antiAliasWithSaveLayer,
+                  //             // shape: RoundedRectangleBorder(
+                  //             //     borderRadius: BorderRadius.circular(10.0)),
+                  //             // elevation: 5,
+                  //             Image.network(
+                  //                 "https://image.tmdb.org/t/p/w500/" +
+                  //                     list[index],
+                  //                 fit: BoxFit.fill),
+                  //             //),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                 ),
               ],
             ),

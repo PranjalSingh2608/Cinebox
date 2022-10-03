@@ -187,13 +187,19 @@ class _PopularPageState extends State<PopularPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked41) {
-                                              dbref.push().set(
-                                                  popularmovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked41 = !isliked41;
+                                    // if (isliked41) {
+                                    //           dbref.push().set(
+                                    //               popularmovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked41 = !isliked41;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

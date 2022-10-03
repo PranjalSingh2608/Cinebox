@@ -185,13 +185,19 @@ class _MusicPageState extends State<MusicPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked42) {
-                                              dbref.push().set(
-                                                  musicmovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked42 = !isliked42;
+                                    // if (isliked42) {
+                                    //           dbref.push().set(
+                                    //               musicmovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked42 = !isliked42;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

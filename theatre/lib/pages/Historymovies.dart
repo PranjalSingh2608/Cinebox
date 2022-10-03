@@ -185,13 +185,19 @@ class _HistoryPageState extends State<HistoryPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked44) {
-                                              dbref.push().set(
-                                                  historymovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked44 = !isliked44;
+                                    // if (isliked44) {
+                                    //           dbref.push().set(
+                                    //               historymovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked44 = !isliked44;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

@@ -190,13 +190,19 @@ class _ThrillerPageState extends State<ThrillerPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked31) {
-                                              dbref.push().set(
-                                                  thrillermovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked31 = !isliked31;
+                                    // if (isliked31) {
+                                    //           dbref.push().set(
+                                    //               thrillermovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked31 = !isliked31;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,

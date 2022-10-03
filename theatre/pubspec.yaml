@@ -46,7 +46,11 @@ dependencies:
   firebase_database: ^9.1.5
   fluttertoast: ^8.0.9
   shared_preferences: ^2.0.15
-
+  flutter_launcher_icons: ^0.10.0
+flutter_icons: 
+  image_path: "assets/images/Pranjal03.png"
+  android: true
+  ios: true
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -70,9 +74,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -104,6 +108,15 @@ flutter:
       - family: rivera
         fonts:
           - asset: assets/Rivera_PERSONAL_USE_ONLY-Black.otf
+      - family: ubuntu
+        fonts:
+          - asset: assets/Ubuntu-Light.ttf
+      - family: typewriter
+        fonts:
+          - asset: assets/Hand TypeWriter.ttf
+      - family: europa
+        fonts:
+          - asset: assets/europa.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

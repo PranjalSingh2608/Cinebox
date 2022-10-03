@@ -194,13 +194,19 @@ class _ScifiPageState extends State<ScifiPage> {
                               ),
                               IconButton(
                                   onPressed: () {
-                                    if (isliked36) {
-                                              dbref.push().set(
-                                                  scifimovies1[index].poster_path);
-                                            } else {
-                                              //dbref.remove();
-                                            }
-                                            isliked36 = !isliked36;
+                                    // if (isliked36) {
+                                    //           dbref.push().set(
+                                    //               scifimovies1[index].poster_path);
+                                    //         } else {
+                                    //           //dbref.remove();
+                                    //         }
+                                    //         isliked36 = !isliked36;
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                    content: const Text(
+                                        "Feature Coming Soon"),
+                                  ),
+                                    );
                                   },
                                   icon: Icon(
                                     CupertinoIcons.heart,
