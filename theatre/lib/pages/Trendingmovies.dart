@@ -222,7 +222,7 @@ class _TrendingPageState extends State<TrendingPage> {
                                     );
                                         },
                                         icon: Icon(
-                                          CupertinoIcons.heart,
+                                          CupertinoIcons.add,
                                           color: Colors.white,
                                         )),
                                   ],

@@ -206,7 +206,7 @@ class _DocumentryPageState extends State<DocumentryPage> {
                                     );
                                   },
                                   icon: Icon(
-                                    CupertinoIcons.heart,
+                                    CupertinoIcons.add,
                                     color: Colors.white,
                                   )),
                             ],

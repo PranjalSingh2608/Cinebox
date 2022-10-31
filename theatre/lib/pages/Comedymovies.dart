@@ -206,7 +206,7 @@ class _ComedyPageState extends State<ComedyPage> {
                                     );
                                   },
                                   icon: Icon(
-                                    CupertinoIcons.heart,
+                                    CupertinoIcons.add,
                                     color: Colors.white,
                                   )),
                             ],

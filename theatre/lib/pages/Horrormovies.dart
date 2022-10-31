@@ -206,7 +206,7 @@ class _HorrorPageState extends State<HorrorPage> {
                                     );
                                   },
                                   icon: Icon(
-                                    CupertinoIcons.heart,
+                                    CupertinoIcons.add,
                                     color: Colors.white,
                                   )),
                             ],

@@ -208,7 +208,7 @@ class _PopularPageState extends State<PopularPage> {
                                     );
                                   },
                                   icon: Icon(
-                                    CupertinoIcons.heart,
+                                    CupertinoIcons.add,
                                     color: Colors.white,
                                   )),
                             ],

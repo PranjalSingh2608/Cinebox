@@ -206,7 +206,7 @@ class _MusicPageState extends State<MusicPage> {
                                     );
                                   },
                                   icon: Icon(
-                                    CupertinoIcons.heart,
+                                    CupertinoIcons.add,
                                     color: Colors.white,
                                   )),
                             ],

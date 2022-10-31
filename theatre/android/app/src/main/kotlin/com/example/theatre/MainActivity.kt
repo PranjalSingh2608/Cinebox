@@ -1,4 +1,4 @@
-package com.example.theatre
+package com.pranjal.theatre
 
 import io.flutter.embedding.android.FlutterActivity
 

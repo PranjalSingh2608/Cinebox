@@ -361,7 +361,7 @@ class _Home_pageState extends State<Home_page> {
             id: i['id']);
         thrillermovies.add(thrill);
       }
-      for (var i in jsonDatatrending['results']) {
+      for (var i in jsonDatascifi['results']) {
         ScifiMovies scifi = ScifiMovies(
             title: i["title"],
             overview: i['overview'],
@@ -531,7 +531,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -659,7 +659,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -787,7 +787,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -914,7 +914,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1038,7 +1038,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1166,7 +1166,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1292,7 +1292,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1420,7 +1420,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1484,7 +1484,7 @@ class _Home_pageState extends State<Home_page> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => MovieDesc(
-                                      name: thrillermovies[index].title,
+                                      name: scifimovies[index].title,
                                       backdrop_path:
                                           "https://image.tmdb.org/t/p/w500/" +
                                               scifimovies[index].backdrop_path,
@@ -1520,7 +1520,7 @@ class _Home_pageState extends State<Home_page> {
                                               MaterialPageRoute(
                                                   builder: (context) => MovieDesc(
                                                       name:
-                                                          thrillermovies[index]
+                                                          scifimovies[index]
                                                               .title,
                                                       backdrop_path:
                                                           "https://image.tmdb.org/t/p/w500/" +
@@ -1545,7 +1545,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1669,7 +1669,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1794,7 +1794,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -1916,7 +1916,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
@@ -2032,7 +2032,7 @@ class _Home_pageState extends State<Home_page> {
                                   ),
                                   IconButton(
                                     icon: Icon(
-                                      CupertinoIcons.heart,
+                                      CupertinoIcons.add,
                                       color: Colors.white,
                                     ),
                                     onPressed: () {

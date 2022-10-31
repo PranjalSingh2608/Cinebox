@@ -211,7 +211,7 @@ class _ThrillerPageState extends State<ThrillerPage> {
                                     );
                                   },
                                   icon: Icon(
-                                    CupertinoIcons.heart,
+                                    CupertinoIcons.add,
                                     color: Colors.white,
                                   )),
                             ],

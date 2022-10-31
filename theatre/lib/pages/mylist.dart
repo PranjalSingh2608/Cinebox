@@ -29,13 +29,13 @@ import 'description.dart';
 final List<String> values = [];
 final List<String> list = [];
 
-class LikedVideos extends StatefulWidget {
-  const LikedVideos({super.key});
+class MyList extends StatefulWidget {
+  const MyList({super.key});
   @override
-  State<LikedVideos> createState() => _LikedVideosState();
+  State<MyList> createState() => _MyListState();
 }
 
-class _LikedVideosState extends State<LikedVideos> {
+class _MyListState extends State<MyList> {
   DatabaseReference dbref = FirebaseDatabase.instance
       .ref()
       .child("Liked Videos")

@@ -206,7 +206,7 @@ class _TopRatedPageState extends State<TopRatedPage> {
                                     );
                                   },
                                   icon: Icon(
-                                    CupertinoIcons.heart,
+                                    CupertinoIcons.add,
                                     color: Colors.white,
                                   )),
                             ],

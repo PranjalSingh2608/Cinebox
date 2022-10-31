@@ -209,7 +209,7 @@ class _AdventurePageState extends State<AdventurePage> {
                                   );
                                 },
                                 icon: Icon(
-                                  CupertinoIcons.heart,
+                                  CupertinoIcons.add,
                                   color: Colors.white,
                                 )),
                           ],

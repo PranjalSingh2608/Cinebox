@@ -9,7 +9,6 @@ import 'package:theatre/pages/Documentries.dart';
 import 'package:theatre/pages/Historymovies.dart';
 import 'package:theatre/pages/Home_Page.dart';
 import 'package:theatre/pages/Horrormovies.dart';
-import 'package:theatre/pages/Likedvideos.dart';
 import 'package:theatre/pages/Login_page.dart';
 import 'package:theatre/pages/Music.dart';
 import 'package:theatre/pages/Popularmovies.dart';
@@ -19,6 +18,8 @@ import 'package:theatre/pages/TopRatedmovies.dart';
 import 'package:theatre/pages/Trendingmovies.dart';
 import 'package:theatre/pages/Upcomingmovies.dart';
 import 'package:theatre/utils/routes.dart';
+
+import '../pages/mylist.dart';
 
 List<bool> _likes = List.filled(1000, true);
 
@@ -84,10 +85,8 @@ class _MyDrawerState extends State<MyDrawer> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LikedVideos()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => MyList()));
                       },
                     ),
                   ),
