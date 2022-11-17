@@ -535,26 +535,11 @@ class _Home_pageState extends State<Home_page> {
                                       color: Colors.white,
                                     ),
                                     onPressed: () {
-                                      //   if (isliked1) {
-                                      //     dbref.push().set(
-                                      //         trendingMovies[index].poster_path);
-                                      //   } else {
-                                      //     //dbref.remove();
-                                      //   }
-                                      //   isliked1 = !isliked1;
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: const Text(
-                                            "Feature Coming Soon",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          backgroundColor:
-                                              Color.fromARGB(255, 68, 68, 68),
-                                        ),
-                                      );
+                                        if (isliked1) {
+                                          dbref.push().set(
+                                              {'video':trendingMovies[index].poster_path});
+                                        } 
+                                        isliked1 = !isliked1;
                                     },
                                   ),
                                 ],

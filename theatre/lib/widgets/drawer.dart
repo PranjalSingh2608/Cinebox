@@ -77,7 +77,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   ListTile(
                     title: TextButton(
                       child: Text(
-                        "Liked Movies",
+                        "My List",
                         textAlign: TextAlign.center,
                         textScaleFactor: 1.2,
                         style: TextStyle(

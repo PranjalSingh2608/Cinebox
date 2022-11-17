@@ -50,6 +50,7 @@ dependencies:
   url_launcher: ^6.1.6
   font_awesome_flutter: ^10.2.1
   lottie: ^1.4.3
+  get: ^4.6.5
 flutter_icons: 
   image_path: "assets/images/Pranjal03.png"
   android: true
